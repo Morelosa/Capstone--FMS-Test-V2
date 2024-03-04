@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          This is where the FMS Test v2 Frontend will go!
+          This is where the FMS Test v2 Frontend will go! Another test!
         </p>
         <a
           className="App-link"
