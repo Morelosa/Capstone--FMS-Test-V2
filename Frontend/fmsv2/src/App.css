@@ -1,38 +1,79 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  min-height: 150vh;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background: linear-gradient(burlywood, rgb(255, 192, 192));
 }
 
-.App-link {
-  color: #61dafb;
+.auth-form-container, .login-form, .SignUp-form {
+  display: flex;
+  flex-direction: column;
+  column-gap: normal;
+  
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.auth-form-container {
+  padding: 5rem;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.header{
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  align-items: center;
+  margin-top: 30px;
+  width: 100%;
+}
+
+label {
+  text-align: left;
+  padding: 0.25rem 0;
+}
+
+.input {
+  margin: 0.5rem 0;
+  padding: 2rem;
+  border: none;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  width: 500px;
+  height: 50px;
+  background: #eaeaea ;
+
+}
+
+.input img {
+  margin: 0px 30px;
+}
+
+button {
+border: none;
+background-color: burlywood;
+padding: 20px;
+border-radius: 10px;
+cursor: pointer;
+color: black;
+column-gap: 20px;
+}
+
+.forgot-password{
+  padding-left: 20px;
+  margin-top: 30px;
+  color: #797979;
+  font-size: 16px;
+}
+
+.forgot-password span{
+  color: blue;
+  cursor: pointer;
+}
+.Link-btn {
+  background: none;
+  text-decoration: underline;
 }

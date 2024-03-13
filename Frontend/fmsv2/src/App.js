@@ -1,25 +1,22 @@
+import React, { useState } from "react";
 import logo from './logo.svg';
 import './App.css';
+import { Login } from "./Login";
+import { SignUp } from "./SignUp";
 
 function App() {
+  const [currentForm, setcurrentForm] = useState('Login');
+
+  const toggleForm = (formName) => {
+    setcurrentForm(formName);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          This is where the FMS Test v2 Frontend will go!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        currentForm === "Login" ? <Login onFormSwitch={toggleForm} /> : <SignUp onFormSwitch={toggleForm} />
+      }
     </div>
   );
 }
-
 export default App;
