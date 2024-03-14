@@ -1,27 +1,37 @@
-import React, {useState} from "react";
-export const SignUp = (props) => {
-    const [email, setEmail] = useState('');
-    const [pass, setPass] = useState('');
-    const [name, setName] = useState('');
+// import React, {useState} from "react";
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(email);
-    }
+// import Fms_Logo from '../src/Fms_Logo.jpg'
+// export const Login = (props) => {
+//     const [email, setEmail] = useState('');
+//     const [pass, setPass] = useState('');
 
-    return (
-        <div className="auth-form-container">
-            <h2>Sign Up</h2>
-        <form className="SignUp-form"onSubmit={handleSubmit}>
-            <label htmlFor="name">Full Name</label>
-            <input value={name} onChange={(e) => setName(e.target.value)} name="name" id="name" placeholder="Full Name" />
-            <label htmlFor="email">Email</label>
-            <input value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@gmail.com" id="email" name="email" />
-            <label htmlFor="password">Password</label>
-            <input value={pass} onChange={(e) => setPass(e.target.value)}type="password" placeholder="***********" id="password" name="password" />
-            <button type="submit">Log In</button>
-        </form>
-        <button className="Link-btn" onClick={() => props.onFormSwitch('Login')}>Already have an account? Login Here.</button>
-        </div>
-    )
-}
+//     const handleSubmit = (e) => {
+//         e.preventDefault();
+//         console.log(email);
+//     }
+
+//     return (
+//         <div className="auth-form-container">
+//             <div className="header">
+//                 <div className="text"></div>
+//                 <div className="underline"></div>
+//             </div>
+//              <div className="inputs">
+//                 <div className="input">
+//                     <img src={Fms_Logo} height={100} width={150}/>
+//                     <h2>Sign In</h2>
+//              </div>
+//         <form className="Login-form"onSubmit={handleSubmit}>
+//             <label htmlFor="email">Email</label>
+//             <input value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@gmail.com" id="email" name="email" />
+//             <label htmlFor="password">Password</label>
+//             <input value={pass} onChange={(e) => setPass(e.target.value)}type="password" placeholder="***********" id="password" name="password" />
+//             <button type="submit">Log In</button>
+//         </form>
+//         <div className="forgot-password">Forgot password? <span>Click Here!</span></div>
+//         <button className="Link-btn" onClick={() => props.onFormSwitch('SignUp')}>Don't have an account? Sign Up!</button>
+//         </div>
+//         </div>
+
+//     )
+// }
