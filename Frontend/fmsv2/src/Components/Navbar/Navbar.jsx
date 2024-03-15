@@ -8,7 +8,7 @@ const Navbar = () => {
     const [menu,setMenu] =useState("overview");
    return(
    
-    <div  classname= 'navbar'>
+    <div  className= 'navbar'>
        {/* <div className="nav-logo">
             <img src= {logo1} alt="" />
                 <p>FMS Test</p>
@@ -20,7 +20,7 @@ const Navbar = () => {
             <li onClick={()=>{setMenu("tutorials")}}><Link style={{textDecoration: 'none'}} to='tutorials'>Tutorials</Link>{menu==="tutorials"?<hr/>:<></>}</li>
         
             <div className="nav-login-user">
-        <Link to='/login'><button>Sign In</button></Link>
+        <Link to='/Signin'><button>Sign In</button></Link>
         <img src= {user_icon1} alt="" />
      </div>
 

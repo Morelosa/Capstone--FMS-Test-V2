@@ -9,14 +9,14 @@
  * 
  */
 
-
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 import HomeCategory from "./Pages/HomeCategory";
 import Home from "./Pages/Home";
 import Product from "./Pages/Product";
-import SigninSignup from "./Pages/SigninSignup";
+import Signin from "./Pages/Signin";
+import Signup from "./Pages/Signup";
 
 
 
@@ -35,7 +35,8 @@ function App() {
         <Route path="product" element={<Product/>}>
           <Route path=":productId" element={<Product/>}/>
         </Route>
-        <Route path='/signin' element={<SigninSignup/>}/>
+        <Route path='/Signin' element={<Signin/>}/>
+        <Route path='/Signup' element={<Signup/>}/>
       </Routes>
       </BrowserRouter>
      
