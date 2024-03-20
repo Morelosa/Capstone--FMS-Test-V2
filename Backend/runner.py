@@ -3,10 +3,6 @@
 # og authors (library creators): Antonio Morelos & Matthew Castillo
 # contributors: Carina Gallegos, Neha Das
 
-''' TODO:
-    - need to create tutorial screen
-'''
-
 from flask import Flask, render_template, Response, redirect, url_for, request
 import mediapipe as mp
 import time
@@ -186,7 +182,7 @@ def gen_frames():
         if not success:
             break
         else:
-            rame, landmarks = plot_landmarks(frame)
+            frame, landmarks = plot_landmarks(frame)
             if landmark_record == True:
                 landmark_buffer.append(landmarks)
             ret, buffer = cv2.imencode('.jpg', frame)
