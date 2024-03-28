@@ -20,6 +20,13 @@ const Signup = () => {
           <label>Password</label>
           <input type="password" className="form-control" />
         </div>
+        <div className="form-group">
+          <label>User Type</label>
+          <select className="form-control">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
         <button type="submit" className="btn btn-primary">Sign Up</button>
       </form>
       <p>Already have an account? <Link to="/signin">Sign In</Link></p>
