@@ -9,85 +9,66 @@
  * 
  */
 
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Navbar from './Components/Navbar/Navbar';
-import { BrowserRouter,Routes,Route } from "react-router-dom";
-import HomeCategory from "./Pages/HomeCategory";
-import Home from "./Pages/Home";
-import Product from "./Pages/Product";
-import Signin from "./Pages/Signin";
-import Signup from "./Pages/Signup";
+import Home from "./Pages/Home"; 
+import Overview from "./Pages/Overview";
+// import ExercisesnTutorials from './Pages/ExercisesnTutorials';
+// import Exercises from './Pages/Exercises';
+import Exercises from './Pages/Exercises';
+import Signin from './Pages/Signin';
 
-
-
-function App() {
-
-  return (
-   
-    <div>
-      <BrowserRouter>
-      <Navbar/>
+export default function App() {
+  return(
+    <div className='="App'>
       <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/overview' element={<HomeCategory category="overview"/>}/>
-        <Route path='/exercises' element={<HomeCategory category="exercises"/>}/>
-        <Route path='/tutorials' element={<HomeCategory category="tutorials"/>}/>
-        <Route path="product" element={<Product/>}>
-          <Route path=":productId" element={<Product/>}/>
-        </Route>
-        <Route path='/Signin' element={<Signin/>}/>
-        <Route path='/Signup' element={<Signup/>}/>
+        <Route path= "/" element={<Home/>}/>
+        <Route path= "/overview" element={<Overview/>}/>
+        <Route path= "/exercies+tuorials" element={<Exercises/>}/>
+        <Route path='/signin' element={<Signin/>}/>
       </Routes>
-      </BrowserRouter>
-     
+
+      
     </div>
-  );
+  )
 }
-export default App;
-
-// Ney ha portion..//
-// import React, { useState } from "react";
-// import logo from './logo.svg';
-// import './App.css';
-// import { Login } from "./Login";
-// import { SignUp } from "./SignUp";
 
 
-// // import logo from './logo.svg';
-// import './App.css';
+
+
+// import './App.css';....OLDER VERSION
 // import Navbar from './Components/Navbar/Navbar';
-// //import Test from './Pages/Test.js';
-// //app.js linked to navbar.
+// import { BrowserRouter,Routes,Route } from "react-router-dom";
+// import HomeCategory from "./Pages/HomeCategory";
+// import Home from "./Pages/Home";
+// import Product from "./Pages/Product";
+// import Signin from "./Pages/Signin";
+// import Signup from "./Pages/Signup";
+
 
 
 // function App() {
-//   const [currentForm, setcurrentForm] = useState('Login');
-
-//   const toggleForm = (formName) => {
-//     setcurrentForm(formName);
-//   }
 
 //   return (
-//     <div className="App">
-//       {
-//         currentForm === "Login" ? <Login onFormSwitch={toggleForm} /> : <SignUp onFormSwitch={toggleForm} />
-//       }
+   
+//     <div>
+//       <BrowserRouter>
+//       <Navbar/>
+//       <Routes>
+//         <Route path='/' element={<Home/>}/>
+//         <Route path='/overview' element={<HomeCategory category="overview"/>}/>
+//         <Route path='/exercises' element={<HomeCategory category="exercises"/>}/>
+//         <Route path='/tutorials' element={<HomeCategory category="tutorials"/>}/>
+//         <Route path="product" element={<Product/>}>
+//           <Route path=":productId" element={<Product/>}/>
+//         </Route>
+//         <Route path='/Signin' element={<Signin/>}/>
+//         <Route path='/Signup' element={<Signup/>}/>
+//       </Routes>
+//       </BrowserRouter>
+     
 //     </div>
 //   );
 // }
 // export default App;
 
-
-//The following commented code was to test the connectivity of flask to react.
-//It was left here as refrence. For info about the <Test/> page, look in the Pages folder.
-
-/*
-function App(){
-  return(
-    <div className = "App">
-      <Test/>
-    </div>
-  );
-}
-export default App;
-*/

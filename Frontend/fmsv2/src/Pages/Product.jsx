@@ -1,12 +1,12 @@
-import React from "react";
+// import React from "react";
 
-const Product = () => {
-    return (
-        <div>
+// const Product = () => {
+//     return (
+//         <div>
            
-        </div>
-    )
+//         </div>
+//     )
 
-}
+// }
 
-export default Product
+// export default Product might delete this
