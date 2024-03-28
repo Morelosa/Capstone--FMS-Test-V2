@@ -3,8 +3,10 @@ import React from 'react';
 import './Style.css'
 import { Link } from 'react-router-dom';
 
+
 const Signin = () => {
   return (
+ 
     <div className="container">
       <h2>Sign In</h2>
       <form>
@@ -20,7 +22,9 @@ const Signin = () => {
       </form>
       <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
     </div>
+   
   );
+  
 };
 
 export default Signin;

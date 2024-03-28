@@ -1,13 +1,13 @@
-// where the different catergories will go
-import React from "react";
+// // where the different catergories will go...probably delete this
+// import React from "react";
 
-const HomeCategory = () => {
-    return (
-        <div>
+//  const HomeCategory = () => {
+//     return (
+//         <div>
             
-        </div>
-    )
+//        </div>
+//      )
 
-}
+//  }
 
-export default HomeCategory
+//  export default HomeCategory
