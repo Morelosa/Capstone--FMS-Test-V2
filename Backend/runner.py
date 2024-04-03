@@ -10,6 +10,7 @@ import cv2
 import numpy
 from PIL import Image
 import fms_helper
+import inlinelunge
 
 mp_drawing = mp.solutions.drawing_utils
 mp_pose = mp.solutions.pose
@@ -192,8 +193,16 @@ def gen_frames():
     
     # we now need to process the frames
     processed_data_file = fms_helper.process_landmark_data(landmark_buffer, frame_size)
+    score = inlinelunge.deep_Squat(fms_helper.get_landmark_data(processed_data_file))
+    print(score)
+
+    '''
     processed_frames = fms_helper.create_gif_of_landmark_data(processed_data_file)
     # still need to write scoring function(s)
+    
+
+
+
     # we will need a way to select which scoring function to use
     
     # once processed, we need to output what the computer saw and score it
@@ -207,7 +216,7 @@ def gen_frames():
         frame_counter+=1
         if frame_counter >= len(processed_frames):
             frame_counter = 0
-    
+    '''
 def plot_landmarks(frame):
     with mp_pose.Pose(min_detection_confidence = 0.5, min_tracking_confidence = 0.5) as pose:
         # get data from media pipe
