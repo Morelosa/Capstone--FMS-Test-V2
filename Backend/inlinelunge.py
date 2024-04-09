@@ -193,6 +193,16 @@ def deep_Squat(landmark_dict):
 
     return total_score
 
+'''Algorithms in progress'''
+
+
+
+
+
+
+
+
+
 #Code that allows you to test the deep_squat
 #data = fms_helper.get_landmark_data(r"C:\Users\Anton\.vscode\Code Storage\FMS-Test V2\Capstone--FMS-Test-V2\Backend\deep_squat.csv")
 #score = deep_Squat(data)
