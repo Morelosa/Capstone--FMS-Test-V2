@@ -1,4 +1,3 @@
-
 import React from 'react'; 
 import './Style.css'
 import { Link } from 'react-router-dom';
@@ -27,9 +26,12 @@ const Signup = () => {
             <option value="admin">Admin</option>
           </select>
         </div>
-        <button type="submit" className="btn btn-primary">Sign Up</button>
+        {/* Link the button to the Sign In page */}
+        <Link to="/signin" className="btn btn-primary">Sign Up</Link>
       </form>
+      <div style={{ marginTop: '20px' }}> {/* Added a margin-top */}
       <p>Already have an account? <Link to="/signin">Sign In</Link></p>
+    </div>
     </div>
   );
 };

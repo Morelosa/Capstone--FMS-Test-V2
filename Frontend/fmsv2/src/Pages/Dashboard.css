@@ -1,0 +1,106 @@
+/* Dashboard.css */
+
+.logo-title-container {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    margin-bottom: 25px; /* Add margin-bottom for spacing */
+  }
+  
+  .logo-image {
+    width: 40px; /* Adjust width as needed */
+    height: 40px; /* Adjust height as needed */
+    margin-right: 1px; /* Add margin-right for spacing */
+  }
+  
+  .dashboard-container {
+    margin: 10px; /* Adjust the margin */
+    padding: 10px; /* Adjust the padding */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Hide overflow content */
+    margin-top: 20px;
+}
+
+.dashboard-title {
+    font-size: 36px; /* Adjust the font size as needed */
+    font-weight: bold;
+    margin-top: 1px; /* Move the title down to create space */
+    text-align: left; /* Align "FMS" to the left */
+}
+
+.dashboard-menu {
+    list-style-type: none;
+    padding: 10px; /* Add padding to the menu */
+    display: flex;
+    flex-direction: column; /* Align items vertically as a column */
+}
+
+
+.dashboard-menu-item {
+    margin-top: 30px;
+
+}
+
+
+
+.dashboard-menu-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.dashboard-menu-link:hover {
+    color: #007bff;
+}
+
+.overview-image-container {
+    position: fixed;
+    top: 42%; /* Center the image vertically */
+    right: 20%; /* Move the image a little bit to the left */
+    transform: translateY(-50%); /* Center the image vertically */
+    z-index: -1; /* Ensure the image is behind other content */
+}
+
+.overview-image {
+    width: 140%; /* Cover the entire width */
+    height: 1%; /* Decreased height of the image */
+    object-fit: cover; /* Ensure the image covers the container */
+}
+
+.box-container {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.square-box {
+    width: 20%; /* Decreased width */
+    padding: 5px; /* Adjust padding */
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex; /* Align text vertically and horizontally */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin-top: 20px; /* Adjust the top margin */
+}
+
+
+.left-box {
+    background-color: white;
+    border: 1px solid #ccc;
+    margin-left: 270px; /* Move the box to the right */
+    margin-top: 1px;
+    height: 220px; /* Adjust the height as needed */
+    padding: 10px; /* Adjust padding */
+}
+
+.right-box {
+    background-color:white;
+    border: 1px solid #f0f0f0;
+    margin-right: 220px; /* Move the box to the right */
+    margin-top: 80px; 
+}
+
