@@ -8,16 +8,23 @@
  * -Antonio Morelos
  * 
  */
-
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from "./Pages/Home"; 
-import Overview from "./Pages/Overview";
 // import ExercisesnTutorials from './Pages/ExercisesnTutorials';
 // import Exercises from './Pages/Exercises';
-import Exercises from './Pages/Exercises';
+import ExercisesComponents from './Pages/ExercisesComponents';
 import Signin from './Pages/Signin';                               
 import Signup from './Pages/Signup';
+import StartTest from './Pages/StartTest';
+import Myaccount from './Pages/Myaccount';
+import Contactus from './Pages/Contactus';
+import Dashboard from './Pages/Dashboard';
+import DeepSquatTutorial from './Pages/DeepSquatTutorial'; // Import the DeepSquatTutorial component
+import HurdleStepTutorial from './Pages/HurdleStepTutorial'; // Import the HurdleStepTutorial component
+import InLineLunge from './Pages/InLineLunge'; // Import the InLineLunge component
+import ShoulderMobility from './Pages/ShoulderMobility'; // Import the ShoulderMobility component
+import ActiveStraightLegRaise from './Pages/ActiveStraightLegRaise'; // Import the Active Straight Leg Raise component
 
 
 export default function App() {
@@ -25,12 +32,20 @@ export default function App() {
     <div className='="App'>
       <Routes>
         <Route path= "/" element={<Home/>}/>
-        <Route path= "/overview" element={<Overview/>}/>
-        <Route path= "/exercies+tuorials" element={<Exercises/>}/>
+        <Route path= "/ExercisesComponents" element={<ExercisesComponents/>}/>
         <Route path='/signin' element={<Signin/>}/>
         <Route path='/signup' element={<Signup/>}/>
-      </Routes>
+        <Route path="/StartTest" element={<StartTest />} />
+        <Route path="/deep-squat-tutorial" element={<DeepSquatTutorial />} /> {/* Add route for Deep Squat tutorial page */}      
+        <Route path="/Hurdle-step-tutorial" element={<HurdleStepTutorial />} /> {/* Add route for Hurdle Step tutorial page */}  
+        <Route path="/Inline-lunge-tutorial" element={<InLineLunge />} /> {/* Add route for Inline Lunge tutorial page */}   
+        <Route path="/shoulder-mobility-tutorial" element={<ShoulderMobility />} /> {/* Add route for shoulder mobility tutorial page */}    
+        <Route path="/active-straight-leg-raise-tutorial" element={<ActiveStraightLegRaise />} /> {/* Add route for Active Straight Leg Raise tutorial page */}      
+        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/Myaccount" element={<Myaccount />} />
+        <Route path="/Contactus" element={<Contactus />} />
 
+        </Routes>
       
     </div>
   )
