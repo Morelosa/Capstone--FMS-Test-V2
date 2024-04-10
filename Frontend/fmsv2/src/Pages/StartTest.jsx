@@ -100,6 +100,7 @@ const StartTest = () => {
         />
       </div>
 
+      {/*This is where the backend is going to be implimented */}
       {/* Start Test button */}
       {countdown === 0 && (
         <button onClick={startCountdown} className="start-test-button">
