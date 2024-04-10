@@ -1,5 +1,3 @@
-#Testing inline Lunge in openCV and mediapipe
-#2 Angles required: 1 from the side, and one from the front
 #Author of this page: Antonio Morelos
 
 
@@ -53,6 +51,17 @@ def calculate_angle(a, b, c):
         angle = 360 - angle
     
     return angle
+
+def slope(a, b):
+    a = np.array(a)
+    b = np.array(b)
+
+    delta_x = a[0] - b[0]
+    delta_y = a[1] - b[1]
+
+    slope = delta_y / delta_x
+    
+    return slope
 
 ##New vrsion of deep squat calculation
 def deep_Squat(landmark_dict):
@@ -194,6 +203,76 @@ def deep_Squat(landmark_dict):
     return total_score
 
 '''Algorithms in progress'''
+def inline_lunge(landmark_dict):
+    #Conditions for proper score:
+    # Minimal torso movement (Technically a stick is supposed to be involved but torso movement does the same)
+    # Feet must remain in sagital plane (Straight)
+    # Knee must touch floor
+    # Front foot remains in place
+
+
+    #Set up required variables for torsoo movement tracker
+    all_l_tibia_angles = list()
+    all_l_torso_angles = list()
+    all_r_tibia_angles = list()
+    all_r_torso_angles = list()
+
+    #Knee to floor variables
+    knee_y_positions = list()
+
+    #Variables for tracking if foot comes off floor
+    all_r_foot_slopes = list()
+
+
+    for frame in landmark_dict:
+
+        '''Find angles required to calculate if torso is Parallell'''
+        
+        #Record required landmarks for torso tracking
+        l_shoulder = landmark_dict[frame][11]
+        l_hip = landmark_dict[frame][23]
+        l_knee = landmark_dict[frame][25]
+        r_shoulder = landmark_dict[frame][12]
+        r_hip = landmark_dict[frame][24]
+        r_knee = landmark_dict[frame][26]
+
+        #Calculate angles for both right and left torso
+        l_torso_angle = float(calculate_angle(l_shoulder, l_hip, l_knee))
+        print(l_torso_angle)
+        l_tibia_angle = float(calculate_angle(l_hip, l_knee, l_ankle))
+        r_torso_angle = float(calculate_angle(r_shoulder, r_hip, r_knee))
+        r_tibia_angle = float(calculate_angle(r_hip, r_knee, r_ankle))
+
+
+        ##Record angles of tibia and torso angles
+        all_r_tibia_angles.append(r_tibia_angle)
+        all_l_tibia_angles.append(l_tibia_angle)
+
+        all_r_torso_angles.append(r_torso_angle)
+        all_l_torso_angles.append(l_torso_angle)
+
+        '''Find Slope required to determine if right foot is set in place'''
+
+        ##Retrieve foot landmakrs from data
+        r_heel = landmark_dict[frame][30]
+        r_front_foot = landmark_dict[frame][32]
+
+        #calculate slope from landmakrs (x1 will be the font of the foot)
+        r_foot_slope = slope(r_front_foot, r_heel)
+
+        #Add the calculated slope for the frame to list of all slopes for further refrence
+        all_r_foot_slopes.append(r_foot_slope)
+
+        '''Determine if knee touches floor based off of y positions'''
+        #Retrieve the y value of the 
+
+        '''Ensure feet are on sagital plane based off of feet z positions'''
+
+
+
+
+    return 0
+
 
 
 
