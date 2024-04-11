@@ -15,19 +15,18 @@ const ShoulderMobility = () => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>
+       </div>
+      <p>
+        Shoulder mobility is a crucial aspect of overall fitness and health. It helps improve movement patterns, reduces the risk of injury, and enhances athletic performance. The following tutorial will guide you through a series of exercises to improve shoulder mobility.
+      </p>
+      <div className="tutorial-text">
+        <p><strong>1. Warm-up:</strong> Begin with gentle arm swings or shoulder circles to warm up the shoulder joints and muscles.</p>
+        <p><strong>2. Shoulder Stretch:</strong> Extend one arm across your body, keeping it straight, and use the opposite arm to gently pull it closer to your chest.</p>
+        <p><strong>3. Shoulder External Rotation:</strong> Stand with your arms bent at 90 degrees and elbows close to your sides. Slowly rotate your forearms outward as far as comfortable.</p>
+        <p><strong>4. Shoulder Internal Rotation:</strong> In the same starting position as external rotation, slowly rotate your forearms inward, keeping elbows close to your sides.</p>
+        <p><strong>5. Overhead Reach:</strong> Extend your arms overhead and gently lean to one side, then the other, to stretch the sides of your body and shoulders.</p>
+        <p><strong>6. Cool-down:</strong> Finish with gentle stretches or static holds to relax your shoulder muscles and improve flexibility.</p>
       </div>
-      <p>
-        The deep squat is a fundamental movement pattern that involves lowering your body into a deep squat position.
-        It is commonly used in strength training, mobility exercises, and functional fitness routines.
-      </p>
-
-      <p>
-        <strong>1. Starting Position:</strong> Stand with feet slightly wider than shoulder-width apart, toes pointed slightly outward. <br />
-        <strong>2. Alignment:</strong> Keep chest up, core engaged, and spine neutral. Relax shoulders and let arms hang naturally. <br />
-        <strong>3. Execution:</strong> Bend knees and push hips back, lowering body down while keeping heels flat. Aim for hips to go below knees. <br />
-        <strong>4. Breathing:</strong> Inhale as you lower, exhale as you rise back up, engaging core and glutes. <br />
-        <strong>5. Common Mistakes:</strong> Avoid knees collapsing inward, rounding the back, or lifting heels off the ground.
-      </p>
       <div className="buttons-container">
       <Link to="/ExercisesComponents" className="btn btn-go-back">Go Back</Link>
         <Link to="/StartTest"><button className="btn btn-primary">Start Test</button></Link>

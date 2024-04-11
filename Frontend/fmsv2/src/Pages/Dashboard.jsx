@@ -1,35 +1,39 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { AuthMenuItems } from '../Components/MenuItems/AuthMenuItems';
 import './Dashboard.css';
-import OverviewImage from "../Components/Assets/Overview.jpg"; // Import the Overview image
+import OverviewImage from "../Components/Assets/Overview.jpg";
 import logo from "../Components/Assets/logo.png";
 
-const Dashboard = () => {
+const Dashboard = ({ username }) => {
   return (
     <div className="dashboard-container">
       <div className="logo-title-container">
-        <img src={logo} alt="logo" className="logo-image" /> 
+        <img src={logo} alt="logo" className="logo-image" />
         <h1 className="dashboard-title">FMS</h1>
       </div>
+      {username && (
+        <div className="username-container">
+          <div className="username-text">{username}</div>
+        </div>
+      )}
       <ul className="dashboard-menu">
         {AuthMenuItems.map((item, index) => (
           <li key={index} className="dashboard-menu-item">
-            <Link to={item.url} className="dashboard-menu-link">
-              <i className={item.icon}></i> {/* Icon */}
+            <a href={item.url} className="dashboard-menu-link">
+              <i className={item.icon}></i>
               {item.title}
-            </Link>
+            </a>
           </li>
         ))}
       </ul>
       <div className="overview-image-container">
-        <img src={OverviewImage} alt="Overview" className="overview-image" /> {/* Use the Overview image */}
+        <img src={OverviewImage} alt="Overview" className="overview-image" />
       </div>
       <div className="box-container">
         <div className="square-box left-box">
           <p>
             <strong>What is Functional Movement Screening? (FMS)</strong><br />
-            The Functional Movement Screen is a system used to screen movement patterns and quality in clients and athletes that could potentially cause injury. It is not a system designed to diagnose or treat injury, but rather highlight limitations and asymmetries through basic movement patterns.
+            The Functional Movement Screen is a system used to screen movement patterns and quality in clients and athletes that could potentially cause injury.
           </p>
         </div>
         <div className="square-box right-box">

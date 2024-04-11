@@ -15,19 +15,18 @@ const HurdleStepTutorial = () => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>
+    </div>
+      <p>
+        The Hurdle Step is a movement pattern that involves stepping over an imaginary or actual hurdle while maintaining balance and stability.
+        It is commonly used to assess mobility, stability, and coordination.
+      </p>
+      <div className="tutorial-text">
+        <p><strong>1. Starting Position:</strong> Stand with feet hip-width apart and an imaginary or actual hurdle in front of you.</p>
+        <p><strong>2. Alignment:</strong> Maintain an upright posture, engage your core, and keep your gaze forward.</p>
+        <p><strong>3. Execution:</strong> Lift one leg and step over the hurdle, keeping the other foot grounded. Follow through with the other leg.</p>
+        <p><strong>4. Breathing:</strong> Maintain normal breathing while performing the movement.</p>
+        <p><strong>5. Common Mistakes:</strong> Avoid excessive leaning, wobbly movements, or losing balance.</p>
       </div>
-      <p>
-        The deep squat is a fundamental movement pattern that involves lowering your body into a deep squat position.
-        It is commonly used in strength training, mobility exercises, and functional fitness routines.
-      </p>
-
-      <p>
-        <strong>1. Starting Position:</strong> Stand with feet slightly wider than shoulder-width apart, toes pointed slightly outward. <br />
-        <strong>2. Alignment:</strong> Keep chest up, core engaged, and spine neutral. Relax shoulders and let arms hang naturally. <br />
-        <strong>3. Execution:</strong> Bend knees and push hips back, lowering body down while keeping heels flat. Aim for hips to go below knees. <br />
-        <strong>4. Breathing:</strong> Inhale as you lower, exhale as you rise back up, engaging core and glutes. <br />
-        <strong>5. Common Mistakes:</strong> Avoid knees collapsing inward, rounding the back, or lifting heels off the ground.
-      </p>
       <div className="buttons-container">
       <Link to="/ExercisesComponents" className="btn btn-go-back">Go Back</Link>
         <Link to="/StartTest"><button className="btn btn-primary">Start Test</button></Link>

@@ -1,9 +1,9 @@
 import I1 from "../Components/Assets/DeepSquat.png";
 import I2 from "../Components/Assets/HurdleStep.png";
-import I3 from "../Components/Assets/InlineLunge.png";
+import I3 from "../Components/Assets/InLineLunge.png";
 import I4 from "../Components/Assets/ShoulderMobility.png";
 import I5 from "../Components/Assets/ActiveStraightLegRaise.png";
-import I6 from "../Components/Assets/TrunkStabilityPushup.png";
+import I6 from "../Components/Assets/TrunkStabilityPushUp.png";
 import I7 from "../Components/Assets/RotaryStability.png";
 import { Link } from 'react-router-dom';
 import "./ExercisesStyle.css";
@@ -46,19 +46,23 @@ const ExercisesComponents = () => {
                 <div className="exercise-item">
                     <img src={I5} alt="Active Straight Leg Raise" />
                     <h2>Active Straight Leg Raise</h2>
-                    <Link to="/Active- straight-leg-Raise-tutorial">
+                    <Link to="/active-straight-leg-raise-tutorial">
                         <button className="btn btn-primary">Click here for tutorial</button>
-                    </Link>
+                        </Link>
                 </div>
                 <div className="exercise-item">
                     <img src={I6} alt="Trunk Stability Push up" />
                     <h2>Trunk Stability Push up</h2>
-                    <button className="btn btn-primary">Click here for tutorial</button>
+                    <Link to="/trunk-stability-push-up-tutorial">
+                        <button className="btn btn-primary">Click here for tutorial</button>
+                        </Link>
                 </div>
                 <div className="exercise-item">
                     <img src={I7} alt="Rotary Stability" />
                     <h2>Rotary Stability</h2>
-                    <button className="btn btn-primary">Click here for tutorial</button>
+                    <Link to="/rotary-stability-tutorial">
+                        <button className="btn btn-primary">Click here for tutorial</button>
+                        </Link>
                 </div>
             </div>
         </div>

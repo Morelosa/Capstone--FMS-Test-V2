@@ -20,14 +20,15 @@ const DeepSquatTutorial = () => {
         The deep squat is a fundamental movement pattern that involves lowering your body into a deep squat position.
         It is commonly used in strength training, mobility exercises, and functional fitness routines.
       </p>
+      <div class="tutorial-text">
+  <p><strong>1. Starting Position:</strong> Stand with feet slightly wider than shoulder-width apart, toes pointed slightly outward.</p>
+  <p><strong>2. Alignment:</strong> Keep chest up, core engaged, and spine neutral. Relax shoulders and let arms hang naturally.</p>
+  <p><strong>3. Execution:</strong> Bend knees and push hips back, lowering body down while keeping heels flat. Aim for hips to go below knees.</p>
+  <p><strong>4. Breathing:</strong> Inhale as you lower, exhale as you rise back up, engaging core and glutes.</p>
+  <p><strong>5. Common Mistakes:</strong> Avoid knees collapsing inward, rounding the back, or lifting heels off the ground.</p>
+</div>
 
-      <p>
-        <strong>1. Starting Position:</strong> Stand with feet slightly wider than shoulder-width apart, toes pointed slightly outward. <br />
-        <strong>2. Alignment:</strong> Keep chest up, core engaged, and spine neutral. Relax shoulders and let arms hang naturally. <br />
-        <strong>3. Execution:</strong> Bend knees and push hips back, lowering body down while keeping heels flat. Aim for hips to go below knees. <br />
-        <strong>4. Breathing:</strong> Inhale as you lower, exhale as you rise back up, engaging core and glutes. <br />
-        <strong>5. Common Mistakes:</strong> Avoid knees collapsing inward, rounding the back, or lifting heels off the ground.
-      </p>
+
       <div className="buttons-container">
       <Link to="/ExercisesComponents" className="btn btn-go-back">Go Back</Link>
 

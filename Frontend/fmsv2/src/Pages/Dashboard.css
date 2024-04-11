@@ -49,6 +49,7 @@
     color: #333;
     font-size: 18px;
     transition: color 0.3s ease;
+    border: none;
 }
 
 .dashboard-menu-link:hover {
@@ -104,3 +105,33 @@
     margin-top: 80px; 
 }
 
+/* Dashboard.css */
+
+.big-font {
+    font-size: 100px; /* Adjust the size as needed */
+    margin-right: 50px;
+  }
+  
+  .username-text {
+    cursor: default; /* Prevent the cursor from changing to a pointer */
+    text-decoration: none; /* Remove underline */
+    color: inherit !important; /* Inherit the color and override any other styles */
+    pointer-events: none; /* Disable pointer events */
+  }
+  
+  .username-text:visited,
+  .username-text:hover,
+  .username-text:focus {
+    color: inherit !important; /* Ensure the color remains unchanged on hover or focus */
+  }
+  
+  /* Dashboard.css */
+
+/* Add border around menu items below username */
+.username-container + .dashboard-menu {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  

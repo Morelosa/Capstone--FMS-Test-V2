@@ -10,30 +10,28 @@ const ActiveStraightLegRaise = () => {
           className="youtube-video"
           width="800"
           height="450"
-          src="https://www.youtube.com/embed/4_66p7a6Opk"
+          src="https://www.youtube.com/embed/4SRBJN-Ql24"
           title="Active Straight Leg Raise Video"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>
       </div>
       <p>
-        The deep squat is a fundamental movement pattern that involves lowering your body into a deep squat position.
-        It is commonly used in strength training, mobility exercises, and functional fitness routines.
+        The active straight leg raise is a movement pattern that involves lifting one leg while keeping it straight. This exercise helps assess and improve hamstring flexibility, hip mobility, and core strength.
       </p>
-
-      <p>
-        <strong>1. Starting Position:</strong> Stand with feet slightly wider than shoulder-width apart, toes pointed slightly outward. <br />
-        <strong>2. Alignment:</strong> Keep chest up, core engaged, and spine neutral. Relax shoulders and let arms hang naturally. <br />
-        <strong>3. Execution:</strong> Bend knees and push hips back, lowering body down while keeping heels flat. Aim for hips to go below knees. <br />
-        <strong>4. Breathing:</strong> Inhale as you lower, exhale as you rise back up, engaging core and glutes. <br />
-        <strong>5. Common Mistakes:</strong> Avoid knees collapsing inward, rounding the back, or lifting heels off the ground.
-      </p>
+      <div className="tutorial-text">
+        <p><strong>1. Starting Position:</strong> Lie on your back with legs straight and arms at your sides.</p>
+        <p><strong>2. Raise Your Leg:</strong> Keep one leg straight and lift it up towards the ceiling as high as you can while keeping the other leg flat on the ground.</p>
+        <p><strong>3. Hold the Position:</strong> Hold the raised leg in the up position for a few seconds, then lower it back down slowly.</p>
+        <p><strong>4. Repeat:</strong> Alternate between legs and repeat the exercise several times for each leg.</p>
+        <p><strong>5. Common Mistakes:</strong> Avoid lifting the opposite leg off the ground or bending the knee of the raised leg.</p>
+      </div>
       <div className="buttons-container">
-        <Link to="/"><button className="btn">Go Back</button></Link>
+        <Link to="/ExercisesComponents" className="btn btn-go-back">Go Back</Link>
         <Link to="/StartTest"><button className="btn btn-primary">Start Test</button></Link>
       </div>
     </div>
   );
-}
+};
 
 export default ActiveStraightLegRaise;

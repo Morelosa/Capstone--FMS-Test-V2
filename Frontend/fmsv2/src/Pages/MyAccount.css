@@ -1,0 +1,124 @@
+/* MyAccount.css */
+/* Container to hold user information and support sections */
+.content-wrapper {
+  background-color: white; /* Set the background color to white */
+  padding: 20px; /* Add padding inside the container */
+  border: 1px solid #ccc; /* Add a border around the container */
+  border-radius: 5px; /* Add a slight border radius */
+}
+
+/* Container to wrap the entire content and apply a blurred background */
+.my-account-container {
+  position: relative;
+  width: 40%; /* Adjust the width as needed */
+  margin: 0px 900px;
+  padding: 20px;
+  border-radius: 5px; /* Add a slight border radius */
+}
+
+.my-account-container::before {
+  content: '';
+  position: fixed; /* Use fixed positioning to ensure the background covers the entire page */
+  top: 0; /* Set the top position to 0 */
+  left: 0; /* Set the left position to 0 */
+  width: 100%; /* Set the width to 100% to cover the entire width of the page */
+  height: 100%; /* Set the height to 100% to cover the entire height of the page */
+  background: url('../Components/Assets/dashboard.jpg') no-repeat center center;
+  background-position: center 30%; /* Adjust the horizontal position of the background */
+  background-size: cover;
+  filter: blur(1.5px); /* Apply blur effect */
+  z-index: -1; /* Ensure it is behind the content */
+}
+
+
+
+
+/* Content wrapper to hold foreground content */
+.my-account-container .content-wrapper {
+  position: relative; /* To maintain the content position over the blurred background */
+  bottom: 20px;
+  padding-top: 50px;
+  bottom: 20px;
+}
+
+/* Separator line style */
+.separator {
+  width: 100%; /* Make the separator line full width */
+  height: 2px; /* Define the height of the separator line */
+  background-color: #ccc; /* Define the color of the separator line */
+  margin: 20px 0; /* Add vertical margin for spacing */
+}
+
+/* Existing styles remain the same */
+.subtitle {
+  font-size: 24px; /* Adjust subtitle font size */
+  margin-bottom: 10px;
+  color: blue; /* Set subtitle text color to black */
+  font-weight: bold; /* Make subtitle bold */
+}
+
+/* Existing form-group and form-control styles */
+.form-group label {
+  color: black; /* Set form group label text color to black */
+}
+
+.form-control {
+  width: 100%; /* Make the input fields full-width */
+  margin-bottom: 10px; /* Add margin below each input field */
+  border: 1px solid black; /* Add black border around input fields */
+  padding: 8px; /* Add padding inside input fields */
+  border-radius: 5px; /* Add a slight border radius */
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: black; /* Change border color when focused */
+}
+
+.form-group span {
+  color: black; /* Set span text color to blue */
+  cursor: pointer; /* Change cursor to pointer for interactive elements */
+  font-weight: bold;
+}
+
+.form-group span:hover {
+  text-decoration: underline; /* Underline text when hovered over */
+}
+
+/* Make the form groups wrap to a new line */
+.form-group {
+  display: flex;
+  flex-direction: column; /* Change to column layout */
+  margin-bottom: 10px;
+}
+
+/* Make the Save button blue and adjust its width */
+.btn.btn-primary {
+  background-color: blue;
+  border-color: blue;
+  color: white; /* Make the button text white */
+}
+
+/* Target paragraphs within the contact-info class */
+.contact-info p {
+  margin: 10px 0; /* Add margin to space out the paragraphs */
+  font-size: 16px; /* Adjust the font size */
+  color: black; /* Set the text color to black */
+  line-height: 1.5; /* Increase the line height for better readability */
+  display: flex; /* Use flexbox layout to align the icon and text */
+  align-items: center; /* Vertically center the icon and text */
+}
+
+/* Styling for the icons within the paragraphs */
+.contact-info p i {
+  margin-right: 10px; /* Add margin to the right of the icon */
+  color: black; /* Set the icon color to black */
+  font-size: 18px; /* Adjust the icon size */
+}
+
+/* Make the text (values) following the icons black */
+.contact-info p span {
+  color: black;
+  font-weight: bold;
+
+}

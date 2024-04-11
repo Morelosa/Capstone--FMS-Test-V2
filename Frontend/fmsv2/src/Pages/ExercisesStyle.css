@@ -1,10 +1,16 @@
+.exercisescomp {
+  background: url('../Components/Assets/solid_background.png') no-repeat center center;
+  background-size: cover; /* Ensures the background image covers the entire container */
+  padding: 80px; /* Adjust padding as needed */
+}
+
 .first-exrecisescomp {
     display: grid;
     align-items: flex-start;
     position: relative;
-    margin: 25px auto 0;
+    margin: 50px 50px 0;
     grid-template-columns: repeat(2, 1fr); /* Two columns */
-    gap: 20px; /* Adjust the gap between items */
+    gap: -5px; /* Adjust the gap between items */
     justify-content: center;
 }
 .go-back-button {
@@ -47,10 +53,8 @@
   }
 
 .exercise-item img {
-    width: 50%; /* Set image width to 100% of container */
-    height: auto;
-    max-width: 100%; /* Ensure images don't exceed their container's width */
-    max-height: 500px; /* Limit maximum height of images */
+    width: 40%; /* Set image width to 100% of container */
+    height: 20%;
     object-fit: cover; /* Maintain aspect ratio and fill container */
     border-radius: 9px;
     box-shadow: -1px 1px 62px -18px rgba(0, 0, 0, 0.19);
