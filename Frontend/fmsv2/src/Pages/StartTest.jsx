@@ -1,12 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Webcam from 'react-webcam';
+import React, { useState, useEffect} from 'react';
 import './StartTest.css';
 import { Link } from 'react-router-dom';
 
 const StartTest = () => {
   const [countdown, setCountdown] = useState(0); // Countdown state
-  const [webcamSize] = useState({ width: '100%', height: '100%' }); // Webcam size
-  const webcamRef = useRef(null); // Reference to the Webcam component
   const [testResult, setTestResult] = useState(null); // Test result state
   const [selectedPainScale, setSelectedPainScale] = useState(null); // Selected pain scale state
   const [selectedExercise, setSelectedExercise] = useState(null); // Selected exercise state
@@ -90,14 +87,7 @@ const StartTest = () => {
 
       {/* Webcam covering the whole page */}
       <div className="webcam-container">
-        <Webcam
-          className="webcam"
-          audio={false}
-          ref={webcamRef}
-          screenshotFormat="image/jpeg"
-          width={webcamSize.width}
-          height={webcamSize.height}
-        />
+		<img src="http://127.0.0.1:5000/" width="100%" height="100%" alt="What Python sees stream"></img>
       </div>
 
       {/*This is where the backend is going to be implimented */}
