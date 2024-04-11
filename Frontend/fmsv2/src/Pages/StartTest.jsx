@@ -7,10 +7,10 @@ const StartTest = () => {
   const [testResult, setTestResult] = useState(null); // Test result state
   const [selectedPainScale, setSelectedPainScale] = useState(null); // Selected pain scale state
   const [selectedExercise, setSelectedExercise] = useState(null); // Selected exercise state
-
+  //const image = document.getElementById("webcam_page_page_src");
   // Function to start the countdown
   const startCountdown = () => {
-    setCountdown(6); // Start the countdown from 6
+    setCountdown(11); // Start the countdown from 11
   };
 
   // Function to handle countdown
@@ -87,7 +87,7 @@ const StartTest = () => {
 
       {/* Webcam covering the whole page */}
       <div className="webcam-container">
-		<img src="http://127.0.0.1:5000/" width="100%" height="100%" alt="What Python sees stream"></img>
+		<img id="webcam_page_page_src" src="http://127.0.0.1:5000/deep_squat" width="100%" height="100%" alt="What Python sees stream"></img>
       </div>
 
       {/*This is where the backend is going to be implimented */}

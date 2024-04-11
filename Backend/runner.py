@@ -16,7 +16,7 @@ mp_drawing = mp.solutions.drawing_utils
 mp_pose = mp.solutions.pose
 app = Flask(__name__)
 
-def gen_frames():
+def gen_frames(which_test):
     camera = cv2.VideoCapture(0)
     frame_size = (640, 480)
     camera.set(cv2.CAP_PROP_FRAME_WIDTH, frame_size[0])
@@ -41,19 +41,29 @@ def gen_frames():
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')  # concat frame one by one and show result
     
     # we now need to process the frames
-    processed_data_file = fms_helper.process_landmark_data(landmark_buffer, frame_size)
-    score = inlinelunge.deep_Squat(fms_helper.get_landmark_data(processed_data_file))
-    print("Score: "+str(score))
+    processed_data_file_name = fms_helper.process_landmark_data(landmark_buffer, frame_size)
+    # initialize to a default that is not what it should be
+    score = 0
+    # switch case so that we score according to which page was called from the python webserver
+    match which_test:
+        case "deep_squat":
+            score = fms_helper.scoring.score_deep_squat(fms_helper.get_landmark_data(processed_data_file_name))
+        case "hurdle_step":
+            score = fms_helper.scoring.score_hurdle_step(fms_helper.get_landmark_data(processed_data_file_name))
+        case "active_straight_leg":
+            score = fms_helper.scoring.score_active_straight_leg(fms_helper.get_landmark_data(processed_data_file_name))
+        case "inline_lunge":
+            score = fms_helper.scoring.score_inline_lunge(fms_helper.get_landmark_data(processed_data_file_name))
+        case "rotary_stability":
+            score = fms_helper.scoring.score_rotary_stability(fms_helper.get_landmark_data(processed_data_file_name))
+        case "shoulder_mobility":
+            score = fms_helper.scoring.score_shoulder_mobility(fms_helper.get_landmark_data(processed_data_file_name))
+        case "trunk_stability":
+            score = fms_helper.scoring.score_trunk_stability(fms_helper.get_landmark_data(processed_data_file_name))
     
-    processed_frames = fms_helper.create_gif_of_landmark_data(processed_data_file)
-    # still need to write scoring function(s)
-    
-
-
-
-    # we will need a way to select which scoring function to use
-    
-    # once processed, we need to output what the computer saw and score it
+    print(which_test+ " score: "+str(score)) # need to figure out the method to post processed score...
+    processed_frames = fms_helper.create_gif_of_landmark_data(processed_data_file_name)
+    # display processed gif
     frame_counter = 0
     while frame_counter < len(processed_frames):
         ret, buffer = cv2.imencode('.jpg', processed_frames[frame_counter])
@@ -83,9 +93,33 @@ def plot_landmarks(frame):
             pass
     return frame, landmarks
     
-@app.route('/')
-def index():
-    return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+@app.route('/deep_squat')
+def call_deep_squat():
+    return Response(gen_frames("deep_squat"), mimetype='multipart/x-mixed-replace; boundary=frame')
+    
+@app.route('/hurdle_step')
+def call_hurdle_step():
+    return Response(gen_frames("hurdle_step"), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/active_straight_leg')
+def call_active_straight_leg():
+    return Response(gen_frames("active_straight_leg"), mimetype='multipart/x-mixed-replace; boundary=frame')
+    
+@app.route('/inline_lunge')
+def call_inline_lunge():
+    return Response(gen_frames("inline_lunge"), mimetype='multipart/x-mixed-replace; boundary=frame')
+    
+@app.route('/rotary_stability')
+def call_rotary_stability():
+    return Response(gen_frames("rotary_stability"), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/shoulder_mobility')
+def call_shoulder_mobility():
+    return Response(gen_frames("shoulder_mobility"), mimetype='multipart/x-mixed-replace; boundary=frame')
+    
+@app.route('/trunk_stability')
+def call_trunk_stability():
+    return Response(gen_frames("trunk_stability"), mimetype='multipart/x-mixed-replace; boundary=frame')
     
 if __name__ == "__main__":
     app.run(debug=True)
