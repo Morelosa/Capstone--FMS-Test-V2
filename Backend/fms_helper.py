@@ -134,10 +134,128 @@ class scoring:
         return total_score
         
     def score_hurdle_step(landmark_dict):
-        # default score if N/A
-        score = 0
+        #Conditions for proper score:
+        # Minimal torso movement (Technically a stick is supposed to be involved but torso movement does the same)
+        # Feet must remain in sagital plane (Straight)
+        # Knee must touch floor
+        # Front foot remains in place
+
+
+        #Set up required variables for torsoo movement tracker
+        all_l_tibia_angles = list()
+        all_l_torso_angles = list()
+        all_r_tibia_angles = list()
+        all_r_torso_angles = list()
+
+        #Knee to floor variables
+        min_knee_y = 10000000
+        floor_position = 0
+        all_r_front_foot_positions = list()
+        y_position_threashold = .2
+        knee_touch_floor = False
+
+        #Variables for tracking if foot comes off floor
+        all_r_foot_slopes = list()
+
+        #List of z slopes required to check if feet on sagital plane
+        all_r_foot_z_slopes = list()
+        all_l_foot_z_slopes = list()
+
+        #Initializes boolean variables for each requirement
+        parallel= True
+
+        parallelism_threshold = 7
+
+
+        for frame in landmark_dict:
+
+            '''Find angles required to calculate if torso is Parallell'''
+            #Record required landmarks for torso tracking
+            l_shoulder = landmark_dict[frame][11]
+            l_hip = landmark_dict[frame][23]
+            l_knee = landmark_dict[frame][25]
+            l_ankle = landmark_dict[frame][27]
+            r_shoulder = landmark_dict[frame][12]
+            r_hip = landmark_dict[frame][24]
+            r_knee = landmark_dict[frame][26]
+            r_ankle = landmark_dict[frame][28]
+
+            #Calculate angles for both right and left torso
+            l_torso_angle = float(calculate_angle(l_shoulder, l_hip, l_knee))
+            l_tibia_angle = float(calculate_angle(l_hip, l_knee, l_ankle))
+            r_torso_angle = float(calculate_angle(r_shoulder, r_hip, r_knee))
+            r_tibia_angle = float(calculate_angle(r_hip, r_knee, r_ankle))
+
+            ##Record angles of tibia and torso angles
+            all_r_tibia_angles.append(r_tibia_angle)
+            all_l_tibia_angles.append(l_tibia_angle)
+
+            all_r_torso_angles.append(r_torso_angle)
+            all_l_torso_angles.append(l_torso_angle)
+
+            '''Find Slope required to determine if right foot is set in place'''
+            ##Retrieve foot landmakrs from data
+            r_heel = landmark_dict[frame][30]
+            r_front_foot = landmark_dict[frame][32]
+
+            #calculate slope from landmakrs (x1 will be the font of the foot)
+            r_foot_slope = slope(r_front_foot, r_heel)
+
+            #Add the calculated slope for the frame to list of all slopes for further refrence
+            all_r_foot_slopes.append(r_foot_slope)
+
+            '''Determine if knee touches floor based off of y positions'''
+            #Record the lowest position to the ground the knee goes. Will be compared to initial placement later
+            if r_knee[1] < min_knee_y:
+                min_knee_y = r_knee[1]
+
+            all_r_front_foot_positions = r_front_foot[1]
+            
+            #Track where the heel is to determine the floor y position
+            if frame == 0:
+                floor_position = r_heel[1]
+            
+            '''Ensure feet are on sagital plane based off of feet z positions'''
+            '''This depth perception is an experiment and is subject to getting axed'''
+            '''If mediapipe depth preception is accurate, we can have this function'''
+            '''Working dynamically from tracking either the right or left knee'''
+            #get left foot heel and left front foot
+            l_heel = landmark_dict[frame][29]
+            l_front_foot = landmark_dict[frame][31]
+            
+            
+            #Determine the z slope for the two feet
+            #If properly aligned, both should be the same
+            l_foot_z_slope = z_slope(l_heel, l_front_foot)
+            r_foot_z_slope = z_slope(r_heel, r_front_foot)
+
+            ##Append slopes to list for further calculations
+            all_l_foot_z_slopes.append(l_foot_z_slope)
+            all_r_foot_z_slopes.append(r_foot_z_slope)
+
+            #end for loop
         
-        return score
+        '''Take torso angles and determine whether or not it stays parallell'''
+        l_angle_difference = abs(statistics.mean(all_l_tibia_angles) - statistics.mean(all_r_torso_angles))
+        r_angle_difference= abs(statistics.mean(all_r_tibia_angles) - statistics.mean(all_r_torso_angles))
+        angle_difference = (l_angle_difference + r_angle_difference)/2
+
+        if angle_difference >= parallelism_threshold:
+            parallel = False
+
+        '''Determine if knee touched floor'''
+        floor_position = np.average(all_r_front_foot_positions)
+        y_position_difference = np.abs(floor_position - min_knee_y)
+
+        if y_position_difference < y_position_threashold:
+            knee_touch_floor = True
+        
+        '''Determine if z slope changed dramatically (Ensures feet stay on saggital plane)'''
+
+
+        return 0
+
+            
         
     def score_active_straight_leg(landmark_dict):
         # default score if N/A
