@@ -6,11 +6,11 @@ const StartTest = () => {
   const [countdown, setCountdown] = useState(0); // Countdown state
   const [testResult, setTestResult] = useState(null); // Test result state
   const [selectedPainScale, setSelectedPainScale] = useState(null); // Selected pain scale state
-  const [selectedExercise, setSelectedExercise] = useState(null); // Selected exercise state
+  const [selectedExercise, setSelectedExercise] = useState(""); // Selected exercise state
   //const image = document.getElementById("webcam_page_page_src");
   // Function to start the countdown
   const startCountdown = () => {
-    setCountdown(11); // Start the countdown from 11
+    setCountdown(10); // Start the countdown from 11
   };
 
   // Function to handle countdown
@@ -58,13 +58,13 @@ const StartTest = () => {
       <div className="select-exercise-dropdown">
         <select className="exercise-select" onChange={(e) => handleExerciseSelect(e.target.value)}>
           <option value="">Select Exercise</option>
-          <option value="Deep Squat">Deep Squat</option>
-          <option value="Hurdle Step">Hurdle Step</option>
-          <option value="Inline Lunge">Inline Lunge</option>
-          <option value="Shoulder Mobility">Shoulder Mobility</option>
-          <option value="Active Straight Leg Raise">Active Straight Leg Raise</option>
-          <option value="Trunk Stability Push Up">Trunk Stability Push Up</option>
-          <option value="Rotary Stability">Rotary Stability</option>
+          <option value="deep_squat">Deep Squat</option>
+          <option value="hurdle_step">Hurdle Step</option>
+          <option value="inline_lunge">Inline Lunge</option>
+          <option value="shoulder_mobility">Shoulder Mobility</option>
+          <option value="active_straight_leg">Active Straight Leg Raise</option>
+          <option value="trunk_stability">Trunk Stability Push Up</option>
+          <option value="rotary_stability">Rotary Stability</option>
         </select>
       </div>
 
@@ -87,7 +87,7 @@ const StartTest = () => {
 
       {/* Webcam covering the whole page */}
       <div className="webcam-container">
-		<img id="webcam_page_page_src" src="http://127.0.0.1:5000/deep_squat" width="100%" height="100%" alt="What Python sees stream"></img>
+		<img id="webcam_page_page_src" src={"http://127.0.0.1:5000/"+selectedExercise} width="100%" height="100%" alt="What Python sees stream"></img>
       </div>
 
       {/*This is where the backend is going to be implimented */}

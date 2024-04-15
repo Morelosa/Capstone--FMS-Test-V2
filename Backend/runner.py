@@ -85,7 +85,7 @@ def gen_frames(which_test):
             score = fms_helper.scoring.score_trunk_stability(fms_helper.get_landmark_data(processed_data_file_name))
     
     print(which_test+ " score: "+str(score)) # need to figure out the method to post processed score...
-    processed_frames = fms_helper.create_gif_of_landmark_data(processed_data_file_name)
+    '''processed_frames = fms_helper.create_gif_of_landmark_data(processed_data_file_name)
     # display processed gif
     frame_counter = 0
     while frame_counter < len(processed_frames):
@@ -96,7 +96,8 @@ def gen_frames(which_test):
         time.sleep(0.1)
         frame_counter+=1
         if frame_counter >= len(processed_frames):
-            frame_counter = 0
+            frame_counter = 0'''
+    return score
     # end of gen_frames!
     
 def plot_landmarks(frame):
