@@ -41,6 +41,18 @@ def slope(a, b):
     slope = delta_y / delta_x
     return slope
 
+def z_slope(a,b):
+    a = np.array(a)
+    b = np.array(b)
+
+    delta_z = a[2] - b[2]
+    delta_x = a[0] - b[0]
+
+    z_slope = delta_z/delta_x
+
+    return z_slope
+
+
 class scoring:
     def score_deep_squat(landmark_dict):
         # default score if N/A
@@ -133,12 +145,13 @@ class scoring:
         
         return total_score
         
-    def score_hurdle_step(landmark_dict):
+    def hurdle_step(landmark_dict):
         #Conditions for proper score:
         # Minimal torso movement (Technically a stick is supposed to be involved but torso movement does the same)
         # Feet must remain in sagital plane (Straight)
         # Knee must touch floor
         # Front foot remains in place
+        score = 0
 
 
         #Set up required variables for torsoo movement tracker
@@ -156,14 +169,17 @@ class scoring:
 
         #Variables for tracking if foot comes off floor
         all_r_foot_slopes = list()
+        slope_threashold = .2
+        foot_off_floor = True
 
         #List of z slopes required to check if feet on sagital plane
         all_r_foot_z_slopes = list()
         all_l_foot_z_slopes = list()
+        z_slope_threashold = .2
+        saggital_plane = False
 
         #Initializes boolean variables for each requirement
-        parallel= True
-
+        parallel= False
         parallelism_threshold = 7
 
 
@@ -250,10 +266,51 @@ class scoring:
         if y_position_difference < y_position_threashold:
             knee_touch_floor = True
         
+        
+        '''Determine if right heel moved off the ground'''
+        stdev_r_foot_slope = statistics.stdev(all_r_foot_slopes)
+        if stdev_r_foot_slope < slope_threashold:
+            foot_off_floor = False
+        
         '''Determine if z slope changed dramatically (Ensures feet stay on saggital plane)'''
+        #Finds the standard deviation of the both feet z slopes
+        l_stdev_z_slope = statistics.stdev(all_l_foot_z_slopes)
+        r_stdev_z_slope = statistics.stdev(all_r_foot_z_slopes)
+        #Takes the average of the two and determine if they moved past threashold
+        average_z_slope = statistics.mean(l_stdev_z_slope,r_stdev_z_slope)
+        if average_z_slope < z_slope_threashold:
+            saggital_plane = True
+        
+        #Since the knee touching the floor is the critical portion of the exercise, if it didn't happen, then return 1
+        if not knee_touch_floor:
+            return 1
 
-
-        return 0
+        #Score normally
+        if knee_touch_floor:
+            score = score +.75
+        
+        if saggital_plane:
+            score = score +.75
+        
+        if parallel:
+            score = score +.75
+        
+        if foot_off_floor:
+            score = score +.75
+            
+        if score == .75:
+            return 1
+        
+        if score == 1.5:
+            return 2
+        
+        if score == 2.25:
+            return 3
+        
+        if score == 3:
+            return 3
+        
+        return score
 
             
         

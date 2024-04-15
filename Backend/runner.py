@@ -3,18 +3,41 @@
 # og authors (library creators): Antonio Morelos & Matthew Castillo
 # contributors: Carina Gallegos, Neha Das
 
-from flask import Flask, render_template, Response, redirect, url_for, request
+from flask import Flask, Response, redirect, url_for, request, jsonify, session
+from flask_bcrypt import Bcrypt
+from flask_cors import CORS, cross_origin
+from flask_session import Session
+#from werkzeug.security import check_password_hash
 import mediapipe as mp
+from database import db, User
 import time
 import cv2
-import numpy
 from PIL import Image
 import fms_helper
-import inlinelunge
+from flask_sqlalchemy import SQLAlchemy
+import redis
+# flask, flask-alchemy, flask-bycrypt, python-dotenv, flask-session, redis, flask cors
 
 mp_drawing = mp.solutions.drawing_utils
 mp_pose = mp.solutions.pose
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = r"sqlite:///test.db"
+app.config['SECRETE_KEY'] = 'key'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_ECHO'] = True
+app.config['SESSION_TYPE'] = "redis"
+app.config['SESSION_PERMANENT'] = False
+app.config['SESSION_USE_SIGNER'] = True
+app.config['SESSION_REDIS'] = redis.from_url("redis://127.0.0.1:6379")
+
+Bcrypt = Bcrypt(app)
+CORS(app, supports_credentials=True)
+server_session = Session(app)
+db.init_app(app)
+with app.app_context():
+    db.create_all()
+
+
 
 def gen_frames(which_test):
     camera = cv2.VideoCapture(0)
@@ -92,7 +115,7 @@ def plot_landmarks(frame):
         except:
             pass
     return frame, landmarks
-    
+
 @app.route('/deep_squat')
 def call_deep_squat():
     return Response(gen_frames("deep_squat"), mimetype='multipart/x-mixed-replace; boundary=frame')
@@ -121,5 +144,66 @@ def call_shoulder_mobility():
 def call_trunk_stability():
     return Response(gen_frames("trunk_stability"), mimetype='multipart/x-mixed-replace; boundary=frame')
     
+@app.route("/register", methods=["POST"])
+def register_user():
+    #gets email and password input
+    name = request.json["name"]
+    email = request.json["email"]
+    password = request.json["password"]
+
+    user_exists = User.query.filter_by(email=email).first() is not None
+
+    if user_exists:
+        return jsonify({"error": "User already exists"}), 409
+    hashed_password = Bcrypt.generate_password_hash(password)
+    new_user = User(name=name, email=email, password=hashed_password)
+    db.session.add(new_user)
+    db.session.commit()
+    
+    Session["user_id"] = new_user.id
+    return jsonify({
+        "id": new_user.id,
+        "email": new_user.email
+    })
+
+@app.route("/login", methods=["POST"])
+def login_user():
+    email = request.json["email"]
+    password = request.json["password"]
+
+    user = User.query.filter_by(email=email).first()
+
+    if user is None:
+        return jsonify({"error": "Unauthorized"}), 401
+    
+    #checking if the password is the same as hashed password
+    if not Bcrypt.check_password_hash(user.password, password):
+        return jsonify({"error": "Unauthorized"}), 401
+    
+    session["user_id"] = user.id
+    return jsonify({
+        "id": user.id,
+        "email": user.email
+    })
+
+@app.route("/logout", methods=["POST"])
+def logout_user():
+    Session.pop("user_id")
+    return "200"
+
+@app.route("/@me")
+def get_current_user():
+
+    user_id = session.get("user_id")
+
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
+    
+    user = User.query.filter_by(id=user_id).first()
+    return jsonify({
+        "id": user.id,
+        "email": user.email
+    }) 
+
 if __name__ == "__main__":
     app.run(debug=True)

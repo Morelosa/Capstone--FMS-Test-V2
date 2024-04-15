@@ -17,7 +17,7 @@ import ExercisesComponents from './Pages/ExercisesComponents';
 import Signin from './Pages/Signin';                               
 import Signup from './Pages/Signup';
 import StartTest from './Pages/StartTest';
-import MyAccount from './Pages/MyAccount';
+import MyAccount from './Pages/Myaccount';
 import Contactus from './Pages/Contactus';
 import Dashboard from './Pages/Dashboard';
 import DeepSquatTutorial from './Pages/DeepSquatTutorial'; // Import the DeepSquatTutorial component
