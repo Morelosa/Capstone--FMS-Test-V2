@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './MyAccount.css';
+import './Myaccount.css';
 
 const MyAccount = () => {
   const [firstName, setFirstName] = useState('John');

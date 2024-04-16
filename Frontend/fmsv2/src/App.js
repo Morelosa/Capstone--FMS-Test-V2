@@ -27,6 +27,7 @@ import ShoulderMobility from './Pages/ShoulderMobility'; // Import the ShoulderM
 import ActiveStraightLegRaise from './Pages/ActiveStraightLegRaise'; // Import the Active Straight Leg Raise component
 import TrunkStabilityPushUp from './Pages/TrunkStabilityPushUp'; 
 import RotaryStability from './Pages/RotaryStability'; 
+import TestResult from './Pages/TestResult';
 
 
 export default function App() {
@@ -38,6 +39,7 @@ export default function App() {
         <Route path='/signin' element={<Signin/>}/>
         <Route path='/signup' element={<Signup/>}/>
         <Route path="/StartTest" element={<StartTest />} />
+        <Route path="/TestResult" element={<TestResult />} />
         <Route path="/deep-squat-tutorial" element={<DeepSquatTutorial />} /> {/* Add route for Deep Squat tutorial page */}      
         <Route path="/Hurdle-step-tutorial" element={<HurdleStepTutorial />} /> {/* Add route for Hurdle Step tutorial page */}  
         <Route path="/Inline-lunge-tutorial" element={<InLineLunge />} /> {/* Add route for Inline Lunge tutorial page */}   

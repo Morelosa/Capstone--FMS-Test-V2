@@ -1,0 +1,23 @@
+/*styling of test Result pg*/
+.my-test h2{
+    margin-top: 2rem;
+    text-align: center;
+    color: black;
+    font-size: 5rem;
+}
+  .bkg{
+    background-image: url("../Components/Assets/solid_background.png");
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background-size: cover;
+  }  
+  .selected-Exercises{
+    margin: 5rem;
+  }
+  .selected-Exercises h3{
+    text-align: justify;
+    font-size: 2rem;
+    margin-top: 4rem;
+    color: black;
+  }
