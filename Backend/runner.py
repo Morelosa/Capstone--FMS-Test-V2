@@ -221,11 +221,13 @@ def login_user():
         "email": user.email
     })
 
+#wip
 @app.route("/logout", methods=["POST"])
 def logout_user():
     session.pop("user_id")
     return "200"
 
+#wip
 @app.route("/@me")
 def get_current_user():
     email = request.json["email"]
@@ -240,6 +242,10 @@ def get_current_user():
         "name": user.name,
         "email": user.email,
     }) 
+
+#This is where the flask api will retrieve the score that the backend compiles from the img src used in the test page
+#There shuold be a new class created called test_scores that save what test was preformed, the time it was done, and the score itself
+@app.route("/get_score")
 
 if __name__ == "__main__":
     app.run(debug=True)
