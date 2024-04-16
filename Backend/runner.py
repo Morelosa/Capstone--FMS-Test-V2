@@ -15,7 +15,6 @@ import cv2
 from PIL import Image
 import fms_helper
 from flask_sqlalchemy import SQLAlchemy
-import redis
 # flask, flask-alchemy, flask-bycrypt, python-dotenv, flask-session, redis, flask cors
 
 mp_drawing = mp.solutions.drawing_utils
@@ -25,11 +24,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = r"sqlite:///test.db"
 app.config['SECRETE_KEY'] = 'key'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
-app.config['SESSION_TYPE'] = "redis"
-app.config['SESSION_PERMANENT'] = False
-app.config['SESSION_USE_SIGNER'] = True
-app.config['SESSION_REDIS'] = redis.from_url("redis://127.0.0.1:6379")
-
+app.config['SESSION_TYPE'] = "filesystem"
+#app.config['SESSION_PERMANENT'] = False
+#app.config['SESSION_USE_SIGNER'] = True
 Bcrypt = Bcrypt(app)
 CORS(app, supports_credentials=True)
 server_session = Session(app)
@@ -146,11 +143,45 @@ def call_trunk_stability():
     return Response(gen_frames("trunk_stability"), mimetype='multipart/x-mixed-replace; boundary=frame')
     
 @app.route("/register", methods=["POST"])
+@app.route("/register", methods=["POST"])
 def register_user():
+
+    # Retrieve JSON data from the request body
+    data = request.get_json()
+
+    # Extract email, password, and name from the JSON data
+    name = data.get("name")
+    email = data.get("email")
+    password = data.get("password")
+
+    # Check if the email already exists in the database
+    user_exists = User.query.filter_by(email=email).first() is not None
+    if user_exists:
+        print("User already exists!")
+        return jsonify({"error": "User already exists"}), 409
+
+    # Hash the password before storing it
+    hashed_password = Bcrypt.generate_password_hash(password)
+    
+    # Create a new user instance and add it to the database
+    new_user = User(name=name, email=email, password=hashed_password)
+    db.session.add(new_user)
+    db.session.commit()
+
+    # Return the new user's information
+    return jsonify({
+        "id": new_user.id,
+        "email": new_user.email
+    }), 201
+
+
+'''
+def register_user():
+    data = request.json.get("user")
     #gets email and password input
-    name = request.json["name"]
-    email = request.json["email"]
-    password = request.json["password"]
+    name = data.get['name']
+    email = data.get["email"]
+    password = data.get["password"]
 
     user_exists = User.query.filter_by(email=email).first() is not None
 
@@ -167,11 +198,13 @@ def register_user():
         "id": new_user.id,
         "email": new_user.email
     })
+'''
 
 @app.route("/login", methods=["POST"])
 def login_user():
-    email = request.json["email"]
-    password = request.json["password"]
+    data = request.get_json()
+    email = data.get("email")
+    password = data.get("password")
 
     user = User.query.filter_by(email=email).first()
 
@@ -190,21 +223,22 @@ def login_user():
 
 @app.route("/logout", methods=["POST"])
 def logout_user():
-    Session.pop("user_id")
+    session.pop("user_id")
     return "200"
 
 @app.route("/@me")
 def get_current_user():
+    email = request.json["email"]
+    #user_id = session.get("user_id")
 
-    user_id = session.get("user_id")
-
-    if not user_id:
-        return jsonify({"error": "Unauthorized"}), 401
+    #if not user_id:
+        #return jsonify({"error": "Unauthorized"}), 401
     
-    user = User.query.filter_by(id=user_id).first()
+    user = User.query.filter_by(email = email).first()
     return jsonify({
-        "id": user.id,
-        "email": user.email
+        #"id": user.id,
+        "name": user.name,
+        "email": user.email,
     }) 
 
 if __name__ == "__main__":

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {useNavigate} from "react-router-dom";
 import './Style.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -8,22 +9,28 @@ function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const registerUser = async () => {
-    try{
-      const resp = await axios.post("//localhost:5000/register",{
-        name,
-        email,
-        password,
+    try {
+      const response = await axios.post('http://127.0.0.1:5000/register', {
+        email: email,
+        password: password
+        
       });
-
-      window.location.href = "/login"
-    } catch(error){
-      if(error.response.status == 401){
-        alert("Invalid credentials")
+  
+      console.log(response);
+      navigate("/dashboard");
+    } catch (error) {
+      console.log(error, 'error');
+      if (error.response && error.response.status === 401) {
+        alert("Invalid credentials");
+      } else {
+        // Handle other types of errors
+        console.error("An error occurred:", error.message);
       }
     }
-  }
+  };
 
   return (
     <div className="container">
