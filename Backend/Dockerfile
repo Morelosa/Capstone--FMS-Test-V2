@@ -6,8 +6,11 @@ WORKDIR /app
 
 RUN pip install --upgrade setuptools pip
 RUN pip install opencv-python
-RUN pip install opencv_contrib_python
+RUN pip install opencv-contrib-python
 RUN pip install -r requirements.txt
+RUN pip install opencv-python-headless
+RUN git clone --depth 1 https://github.com/google/mediapipe.git
+RUN python -c "import cv2; print(cv2.__version__)"
 
 COPY . .
 
