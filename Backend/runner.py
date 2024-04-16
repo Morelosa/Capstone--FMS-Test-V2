@@ -155,13 +155,14 @@ def register_user():
     user_exists = User.query.filter_by(email=email).first() is not None
 
     if user_exists:
+        print("User already exists!")
         return jsonify({"error": "User already exists"}), 409
     hashed_password = Bcrypt.generate_password_hash(password)
     new_user = User(name=name, email=email, password=hashed_password)
     db.session.add(new_user)
     db.session.commit()
     
-    Session["user_id"] = new_user.id
+    session["user_id"] = new_user.id
     return jsonify({
         "id": new_user.id,
         "email": new_user.email
