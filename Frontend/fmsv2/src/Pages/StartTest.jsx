@@ -1,16 +1,27 @@
 import React, { useState, useEffect} from 'react';
 import './StartTest.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const StartTest = () => {
+
   const [countdown, setCountdown] = useState(0); // Countdown state
   const [testResult, setTestResult] = useState(null); // Test result state
   const [selectedPainScale, setSelectedPainScale] = useState(null); // Selected pain scale state
-  const [selectedExercise, setSelectedExercise] = useState(null); // Selected exercise state
+  const [selectedExercise, setSelectedExercise] = useState(""); // Selected exercise state
+  const [exercisePort, setExercisePort] = useState("");
+
   //const image = document.getElementById("webcam_page_page_src");
-  // Function to start the countdown
+  // Function to start the test
   const startCountdown = () => {
-    setCountdown(11); // Start the countdown from 11
+    setExercisePort("http://127.0.0.1:5000/"+{selectedExercise})
+    /*axios.request({selectedExercise}).then((response) =>
+    console.log(response.status, response.data.token)
+  )
+    
+*/
+
+    setCountdown(10); // Start the countdown from 11
   };
 
   // Function to handle countdown
@@ -35,6 +46,7 @@ const StartTest = () => {
     setTestResult(null);
     setSelectedPainScale(null); // Reset the selected pain scale as well
     setSelectedExercise(null); // Reset the selected exercise as well
+    setExercisePort(null); //Resets the exercise port so nothing is displayed
   };
 
   // Function to handle pain scale selection
@@ -46,6 +58,8 @@ const StartTest = () => {
   const handleExerciseSelect = (value) => {
     setSelectedExercise(value);
   };
+  const dialog = document.querySelector("dialog")
+
 
   return (
     <div className="start-test-container">
@@ -54,17 +68,18 @@ const StartTest = () => {
         <button onClick={resetTest}>Reset</button>
       </div>
 
+      {/*Port to retrieve image source:http://127.0.0.1:5000/  */}
       {/* Select Exercise dropdown */}
       <div className="select-exercise-dropdown">
         <select className="exercise-select" onChange={(e) => handleExerciseSelect(e.target.value)}>
           <option value="">Select Exercise</option>
-          <option value="Deep Squat">Deep Squat</option>
-          <option value="Hurdle Step">Hurdle Step</option>
-          <option value="Inline Lunge">Inline Lunge</option>
-          <option value="Shoulder Mobility">Shoulder Mobility</option>
-          <option value="Active Straight Leg Raise">Active Straight Leg Raise</option>
-          <option value="Trunk Stability Push Up">Trunk Stability Push Up</option>
-          <option value="Rotary Stability">Rotary Stability</option>
+          <option value="deep_squat">Deep Squat</option>
+          <option value="hurdle_step">Hurdle Step</option>
+          <option value="inline_lunge">Inline Lunge</option>
+          <option value="shoulder_mobility">Shoulder Mobility</option>
+          <option value="active_straight_leg">Active Straight Leg Raise</option>
+          <option value="trunk_stability">Trunk Stability Push Up</option>
+          <option value="rotary_stability">Rotary Stability</option>
         </select>
       </div>
 
@@ -72,6 +87,12 @@ const StartTest = () => {
       {selectedExercise && (
         <p className="selected-exercise">Selected Exercise: {selectedExercise}</p>
       )}
+
+      {/*Display exercise port 
+      {exercisePort &&(
+        <p className="selected-exercise">Selected Exercise Port: {exercisePort}</p>
+      )}
+      */}
 
       {/* Display selected pain scale */}
       {selectedPainScale && (
@@ -85,10 +106,21 @@ const StartTest = () => {
         </Link>
       </div>
 
-      {/* Webcam covering the whole page */}
+
+
+      
+      {/* Webcam covering the whole page 
       <div className="webcam-container">
-		<img id="webcam_page_page_src" src="http://127.0.0.1:5000/deep_squat" width="100%" height="100%" alt="What Python sees stream"></img>
-      </div>
+        <img id="webcam_page_page_src" src={exercisePort} width="100%" height="100%" alt=""></img>
+      </div>*/}
+      {exercisePort && (
+        <img id="webcam_page_page_src" src={exercisePort} width="100%" height="100%" alt=""></img>
+      )}
+
+
+
+
+      
 
       {/*This is where the backend is going to be implimented */}
       {/* Start Test button */}
@@ -112,10 +144,22 @@ const StartTest = () => {
         </div>
       )}
 
+      {/*Exercise Port 
+      {
+        exercisePort && (
+          <div>
+            <p> Test Result: {exercisePort}</p>
+          </div>
+        )
+      }
+      */}
+
       {/* Test result button */}
       <div className="test-result-buttons">
         <button onClick={() => submitTestResult()}>Test Result</button>
       </div>
+
+
 
       {/* Pain scale dropdown */}
       <div className="pain-scale-dropdown">

@@ -1,27 +1,50 @@
 import React, {useState, useRef, useEffect} from 'react'; 
 import './Style.css';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
 function LoginPage(){
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const logInUser = async () => {
-    console.log(email, password);
-
-    try {
-      const resp = await axios.post("//localhost:5000/login", {
-        email,
-        password,
-      });
-
-      window.location.href = "/Dashboard";
-    } catch (error) {
-      if (error.response.status === 401) {
-        alert("Invalid credentials");
+    if(email.length ===0){
+      alert("Email has been left blank!");
+    }
+    else if (password.length ===0){
+      alert("Email has been left blank!")
+    }
+    else{
+      try {
+        const response = await axios.post("http://127.0.0.1:5000/login", {
+          email: email,
+          password: password
+        });
+    
+        console.log(response);
+    
+        // Check if response status is 200 (OK)
+        if (response.status === 200) {
+          // Redirect user to dashboard upon successful login
+          navigate("/dashboard");
+        } else {
+          // Handle other response statuses
+          console.log("Unexpected response status:", response.status);
+        }
+      } catch (error) {
+        console.error("Error occurred during login:", error);
+    
+        // Check if error response status is 401 (Unauthorized)
+        if (error.response && error.response.status === 401) {
+          alert("Invalid credentials");
+        } else {
+          // Handle other error cases
+          alert("An error occurred during login");
+        }
       }
     }
+    
   };
 
   return (
@@ -52,7 +75,7 @@ function LoginPage(){
           </select>
         </div>
         <Link to="/dashboard" className="btn btn-primary">Sign In</Link>
-        <button type = "button" onClick = {()=> logInUser}>
+        <button type = "button" onClick = {logInUser}>
           The REAL Sign In
         </button>
 
