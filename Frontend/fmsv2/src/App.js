@@ -49,7 +49,7 @@ export default function App() {
         <Route path="/rotary-stability-tutorial" element={<RotaryStability />} />
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/MyAccount" element={<MyAccount />} />
-        <Route path="/Contactus" element={<Contactus />} />
+        
 
         </Routes>
       

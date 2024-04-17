@@ -5,6 +5,31 @@
     color: black;
     font-size: 5rem;
 }
+.loadingMSG{
+  margin: 5rem;
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 4rem;
+  color: lightslategray;
+  position: center;
+  top: 500px;
+}
+.errorMSG{
+  margin: 5rem;
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 4rem;
+  color: lightslategray;
+}
+.testResults {
+  margin: 5rem;
+}
+.testResults h3{
+  text-align: justify;
+  font-size: 2rem;
+  margin-top: 4rem;
+  color: black;
+}
   .bkg{
     background-image: url("../Components/Assets/solid_background.png");
     width: 100%;
@@ -20,4 +45,12 @@
     font-size: 2rem;
     margin-top: 4rem;
     color: black;
+  }
+  .go-back-btn{
+    background-color: #007bff;
+    cursor: pointer;
+    color: #fff;
+    position: fixed;
+    left: 60px;
+    top: 40px;
   }

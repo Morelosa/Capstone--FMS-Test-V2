@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Myaccount.css';
+import { Link } from "react-router-dom";
 
 const MyAccount = () => {
   const [firstName, setFirstName] = useState('John');
@@ -39,6 +40,10 @@ const MyAccount = () => {
   };
 
   return (
+    <div className='account.pg'>
+      <Link to="/dashboard">
+        <button className="go-back-button">Go Back</button>
+    </Link>
     <div className="my-account-container">
       {/* New container for user information and support sections */}
       <div className="content-wrapper">
@@ -143,6 +148,7 @@ const MyAccount = () => {
           </p>
         </div>
       </div>
+    </div>
     </div>
   );
 };
