@@ -42,7 +42,7 @@ const MyAccount = () => {
   return (
     <div className='account.pg'>
       <Link to="/dashboard">
-        <button className="go-back-button">Go Back</button>
+        <button className="back-button">Go Back</button>
     </Link>
     <div className="my-account-container">
       {/* New container for user information and support sections */}

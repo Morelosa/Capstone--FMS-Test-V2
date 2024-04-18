@@ -33,6 +33,7 @@ function Signup() {
   };
 
   return (
+    <div className='wp_bkg'>
     <div className="container">
       <h2>Sign Up</h2>
       <form>
@@ -48,13 +49,13 @@ function Signup() {
           <label>Password</label>
           <input type="password" className="form-control" value={password} onChange={(e)=> setPassword(e.target.value)} />
         </div>
-        <div className="form-group">
+        {/* <div className="form-group">
           <label>User Type</label>
           <select className="form-control">
             <option value="user">User</option>
             <option value="admin">Admin</option>
           </select>
-        </div>
+        </div> */}
         {/* Link the button to the Sign In page */}
         <Link to="/signin" className="btn btn-primary">Sign Up</Link>
         <button type="button" onClick={registerUser}>The real sign up button</button>
@@ -62,6 +63,7 @@ function Signup() {
       </form>
       <div style={{ marginTop: '20px' }}> {/* Added a margin-top */}
       <p>Already have an account? <Link to="/signin">Sign In</Link></p>
+    </div>
     </div>
     </div>
   );

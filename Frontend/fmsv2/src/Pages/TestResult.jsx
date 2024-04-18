@@ -54,7 +54,7 @@ function TestResult() {
 
 
 return(
-
+<div className="bkg">
 <div className="result">
     
     <Link to="/dashboard">
@@ -88,7 +88,7 @@ return(
         </div> */}
 
 {/* <button onClick={fetchTestResult}>Retrieve Score</button> */}
-
+</div>
 </div>//result
 
 

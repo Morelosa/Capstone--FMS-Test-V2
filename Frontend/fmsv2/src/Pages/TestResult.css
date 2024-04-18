@@ -54,3 +54,8 @@
     left: 60px;
     top: 40px;
   }
+  .bkg{
+  background: url('../Components/Assets/TR-bkg.png') no-repeat center center;
+  background-size: cover; /* Ensures the background image covers the entire container */
+  padding: 80px; /* Adjust padding as needed */
+  }
