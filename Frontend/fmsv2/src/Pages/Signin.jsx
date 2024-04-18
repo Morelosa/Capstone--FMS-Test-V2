@@ -7,6 +7,8 @@ function LoginPage(){
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
 
   const logInUser = async () => {
     if(email.length ===0){
@@ -58,30 +60,66 @@ function LoginPage(){
             type = "text"
             value = {email}
             onChange = {(e) => setEmail(e.target.value)}
+            className="email-input"
            />
         </div>
+        
+        <div className="form-group password-group">
+                    <label>Password</label>    </div>
+                    <div className="password-input-wrapper">
+                        <input
+                            type={isPasswordVisible ? "text" : "password"}
+                            className="form-control"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <span
+                            className="password-toggle"
+                            onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+                        >
+                            {isPasswordVisible ? (
+                                // Inline SVG for eye-slash icon
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="16"
+                                    height="16"
+                                    fill="currentColor"
+                                    className="bi bi-eye-slash"
+                                    viewBox="0 0 16 16"
+                                >
+                                    <path d="M10.5 5a2.5 2.5 0 0 0-4.9 0A2.5 2.5 0 0 0 10.5 5z" />
+                                    <path d="M1 8s3-6 7-6 7 6 7 6-3 6-7 6-7-6-7-6zm7 4a4 4 0 0 1 0-8 4 4 0 0 1 0 8z" />
+                                </svg>
+                            ) : (
+                                // Inline SVG for eye icon
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="16"
+                                    height="16"
+                                    fill="currentColor"
+                                    className="bi bi-eye"
+                                    viewBox="0 0 16 16"
+                                >
+                                    <path d="M16 8s-3-6-8-6-8 6-8 6 3 6 8 6 8-6 8-6zm-8 3a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+                                    <path d="M6.5 8a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0z" />
+                                </svg>
+                            )}
+                        </span>
+                    </div>
         <div className="form-group">
-          <label>Password</label>
-          <input
-            type = "text"
-            value = {password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        {/* <div className="form-group">
           <label>User Type</label>
           <select className="form-control">
             <option value="user">User</option>
             <option value="admin">Admin</option>
           </select>
-        </div> */}
+        </div> 
         <Link to="/dashboard" className="btn btn-primary">Sign In</Link>
-        <button type = "button" onClick = {logInUser}>
+        <button className='RealSignIn' type = "button" onClick = {logInUser}>
           The REAL Sign In
         </button>
 
       </form>
-      <div style={{ marginTop: '20px' }}> */{/* Added a margin-top */}/*
+      <div style={{ marginTop: '20px' }}> 
         <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
       </div>
     </div>

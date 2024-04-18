@@ -156,7 +156,9 @@ const StartTest = () => {
 
       {/* Test result button */}
       <div className="test-result-buttons">
-        <button onClick={() => submitTestResult()}>Test Result</button>
+      <Link to="/TestResult">
+       <button onClick={() => submitTestResult()}>Test Result</button>
+       </Link> 
       </div>
 
 

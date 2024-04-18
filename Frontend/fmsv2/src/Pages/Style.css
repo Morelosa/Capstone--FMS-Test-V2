@@ -26,19 +26,13 @@
   cursor: pointer;
   width: 380px;
   margin-bottom: 20px;
+  background-color: blue;
 }
-.button{
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 380px;
-  margin-bottom: 20px;
-}
+
 .btn-primary {
   background-color: #007bff; /* Change button background color to blue */
   color: #fff; /* Set text color to white */
-  gap: 20px;
+  gap: 50px;
   margin-bottom: 20px;
 
 }
@@ -46,8 +40,53 @@
 .btn-primary:hover {
   background-color: #0056b3;
 }
+
+
+.RealSignIn {
+  background-color: #4caf50; /* Set a green background color */
+  color: white; /* Set the text color to white */
+  border: none; /* Remove the default button border */
+  padding: 12px 20px; /* Add some padding for better spacing */
+  border-radius: 5px; /* Add rounded corners */
+  cursor: pointer; /* Change cursor to pointer when hovering */
+  font-size: 16px; /* Set a larger font size */
+  font-weight: bold; /* Make the text bold */
+  transition: background-color 0.3s ease; /* Add transition effect */
+  margin-left: 10px;
+}
+
+/* Add hover effect to the RealSignIn button */
+.RealSignIn:hover {
+  background-color: #45a049; /* Darken the green color on hover */
+}
+
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input {
+    padding-right: 30px; /* Make space for the icon */
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #555;
+}
+
+.email-input {
+  width: 100%; /* Makes the input field full-width */
+  padding: 8px; /* Adjust padding for aesthetics */
+  border: 1px solid; /* Optional border styling */
+  border-radius: 4px; /* Optional border-radius */
+}
+
 .wp_bkg{
   background: url('../Components/Assets/solid_background.png') no-repeat center center;
   background-size: cover; /* Ensures the background image covers the entire container */
   padding: 200px; /* Adjust padding as needed */
 }
+ 
