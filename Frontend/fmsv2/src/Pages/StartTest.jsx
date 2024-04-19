@@ -15,7 +15,7 @@ const StartTest = () => {
   // Function to start the test
   const startCountdown = () => {
 
-    setExercisePort("http://127.0.0.1:5000/"+ {selectedExercise})
+    setExercisePort("http://127.0.0.1:5000/"+ selectedExercise);
     /*axios.request({selectedExercise}).then((response) =>
     console.log(response.status, response.data.token)
   )

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Myaccount.css';
+import './MyAccount.css';
 import { Link } from "react-router-dom";
 
 const MyAccount = () => {
