@@ -218,7 +218,8 @@ def login_user():
     session["user_id"] = user.id
     return jsonify({
         "id": user.id,
-        "email": user.email
+        "email": user.email,
+        "name": user.name
     })
 
 #wip
@@ -245,7 +246,7 @@ def get_current_user():
 
 #This is where the flask api will retrieve the score that the backend compiles from the img src used in the test page
 #There shuold be a new class created called test_scores that save what test was preformed, the time it was done, and the score itself
-@app.route("/get_score")
+#@app.route("/get_score")
 
 if __name__ == "__main__":
     app.run(debug=True)

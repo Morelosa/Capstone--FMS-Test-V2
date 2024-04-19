@@ -30,6 +30,11 @@ import RotaryStability from './Pages/RotaryStability';
 
 
 export default function App() {
+  const loggedIn = localStorage.getItem('loggedln');
+  const loggedUser = localStorage.getItem('email');
+  const loggedUserName = localStorage.getItem('name');
+
+
   return(
     <div className='="App'>
       <Routes>

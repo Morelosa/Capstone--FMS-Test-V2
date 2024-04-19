@@ -21,12 +21,11 @@ function LoginPage(){
           email: email,
           password: password
         });
-    
-        console.log(response);
-    
+        
         // Check if response status is 200 (OK)
         if (response.status === 200) {
           // Redirect user to dashboard upon successful login
+          
           navigate("/dashboard");
         } else {
           // Handle other response statuses

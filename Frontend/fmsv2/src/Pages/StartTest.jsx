@@ -14,7 +14,8 @@ const StartTest = () => {
   //const image = document.getElementById("webcam_page_page_src");
   // Function to start the test
   const startCountdown = () => {
-    setExercisePort("http://127.0.0.1:5000/"+{selectedExercise})
+
+    setExercisePort("http://127.0.0.1:5000/"+ {selectedExercise})
     /*axios.request({selectedExercise}).then((response) =>
     console.log(response.status, response.data.token)
   )
@@ -88,11 +89,11 @@ const StartTest = () => {
         <p className="selected-exercise">Selected Exercise: {selectedExercise}</p>
       )}
 
-      {/*Display exercise port 
+      {/*Display exercise port */}
       {exercisePort &&(
         <p className="selected-exercise">Selected Exercise Port: {exercisePort}</p>
       )}
-      */}
+      
 
       {/* Display selected pain scale */}
       {selectedPainScale && (
@@ -108,7 +109,7 @@ const StartTest = () => {
 
 
 
-      
+
       {/* Webcam covering the whole page 
       <div className="webcam-container">
         <img id="webcam_page_page_src" src={exercisePort} width="100%" height="100%" alt=""></img>
