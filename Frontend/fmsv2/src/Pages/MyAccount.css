@@ -122,3 +122,11 @@
   font-weight: bold;
 
 }
+.back-button{
+  background-color: #007bff;
+    cursor: pointer;
+    color: #fff;
+    position: fixed;
+    left: 60px;
+    top: 40px;
+}

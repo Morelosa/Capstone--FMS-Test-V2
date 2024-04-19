@@ -1,0 +1,61 @@
+/*styling of test Result pg*/
+.my-test h2{
+    margin-top: 2rem;
+    text-align: center;
+    color: black;
+    font-size: 5rem;
+}
+.loadingMSG{
+  margin: 5rem;
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 4rem;
+  color: lightslategray;
+  position: center;
+  top: 500px;
+}
+.errorMSG{
+  margin: 5rem;
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 4rem;
+  color: lightslategray;
+}
+.testResults {
+  margin: 5rem;
+}
+.testResults h3{
+  text-align: justify;
+  font-size: 2rem;
+  margin-top: 4rem;
+  color: black;
+}
+  .bkg{
+    background-image: url("../Components/Assets/solid_background.png");
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background-size: cover;
+  }  
+  .selected-Exercises{
+    margin: 5rem;
+  }
+  .selected-Exercises h3{
+    text-align: justify;
+    font-size: 2rem;
+    margin-top: 4rem;
+    color: black;
+  }
+  .go-back-btn{
+    background-color: #007bff;
+    cursor: pointer;
+    color: #fff;
+    position: fixed;
+    left: 60px;
+    top: 40px;
+  }
+  .bkg{
+  background: url('../Components/Assets/TR-bkg.png') no-repeat center center;
+  background-size: cover; /* Ensures the background image covers the entire container */
+  padding: 80px; /* Adjust padding as needed */
+  }
