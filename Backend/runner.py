@@ -15,8 +15,11 @@ import cv2
 from PIL import Image
 import fms_helper
 from flask_sqlalchemy import SQLAlchemy
+import os
+import webbrowser
 # flask, flask-alchemy, flask-bycrypt, python-dotenv, flask-session, redis, flask cors
 
+cwd = os.getcwd()
 mp_drawing = mp.solutions.drawing_utils
 mp_pose = mp.solutions.pose
 app = Flask(__name__)
@@ -47,7 +50,7 @@ def gen_frames(which_test):
     
     while landmark_record:
         success, frame = camera.read()  # read the camera frame
-        if time.time()-start_time > 30:
+        if time.time()-start_time > 10:
             landmark_record = False
         if not success:
             break
@@ -94,7 +97,8 @@ def gen_frames(which_test):
         frame_counter+=1
         if frame_counter >= len(processed_frames):
             frame_counter = 0'''
-    return score
+    call_reroute(score)
+    return
     # end of gen_frames!
     
 def plot_landmarks(frame):
@@ -113,6 +117,14 @@ def plot_landmarks(frame):
         except:
             pass
     return frame, landmarks
+
+#@app.route('/reroute')
+def call_reroute(score):
+    temp_txt = open(cwd+"\\temp_score.txt", "w")
+    temp_txt.write(str(score))
+    temp_txt.close()
+    #return redirect("http://localhost:3000/TestResult")
+    webbrowser.open("http://localhost:3000/TestResult")
 
 @app.route('/deep_squat')
 def call_deep_squat():
@@ -142,7 +154,6 @@ def call_shoulder_mobility():
 def call_trunk_stability():
     return Response(gen_frames("trunk_stability"), mimetype='multipart/x-mixed-replace; boundary=frame')
     
-@app.route("/register", methods=["POST"])
 @app.route("/register", methods=["POST"])
 def register_user():
 
@@ -246,7 +257,15 @@ def get_current_user():
 
 #This is where the flask api will retrieve the score that the backend compiles from the img src used in the test page
 #There shuold be a new class created called test_scores that save what test was preformed, the time it was done, and the score itself
-#@app.route("/get_score")
+@app.route("/get_score")
+def call_get_score():
+    if os.path.isfile(cwd+"\\temp_score.txt"):
+        read_temp_txt = open(cwd+"\\temp_score.txt", "r")
+        h = read_temp_txt.read()
+        read_temp_txt.close()
+        os.remove(cwd+"\\temp_score.txt")
+        return h
+    return ""
 
 if __name__ == "__main__":
     app.run(debug=True)

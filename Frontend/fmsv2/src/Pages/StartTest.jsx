@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import './StartTest.css';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 
 const StartTest = () => {
 
@@ -9,18 +8,14 @@ const StartTest = () => {
   const [testResult, setTestResult] = useState(null); // Test result state
   const [selectedPainScale, setSelectedPainScale] = useState(null); // Selected pain scale state
   const [selectedExercise, setSelectedExercise] = useState(""); // Selected exercise state
-  const [exercisePort, setExercisePort] = useState("");
+  const [exercisePort, setExercisePort] = useState(null);
+
 
   //const image = document.getElementById("webcam_page_page_src");
   // Function to start the test
   const startCountdown = () => {
 
     setExercisePort("http://127.0.0.1:5000/"+ selectedExercise);
-    /*axios.request({selectedExercise}).then((response) =>
-    console.log(response.status, response.data.token)
-  )
-    
-*/
 
     setCountdown(10); // Start the countdown from 11
   };
@@ -34,6 +29,7 @@ const StartTest = () => {
 
       return () => clearTimeout(timer); // Cleanup function
     }
+	
   }, [countdown]);
 
   // Function to handle submitting test result
@@ -132,11 +128,12 @@ const StartTest = () => {
       )}
 
       {/* Countdown display */}
+	  /*
       {countdown > 0 && (
         <div className="countdown-display">
           <p>Starting in {countdown}</p>
         </div>
-      )}
+      )}*/
 
       {/* Test result */}
       {testResult && (

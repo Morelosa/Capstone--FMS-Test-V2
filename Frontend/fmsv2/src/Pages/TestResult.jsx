@@ -20,8 +20,10 @@ function TestResult() {
         axios.get("http://127.0.0.1:5000/get_score") 
         .then(response => {
             setTestResults(response.data);
+			//console.log(response.data);
             setLoading(false);
-        //console.log(response)
+			//console.log(loading);
+			//console.log(response)
             })
             .catch(error => {
                 console.error('No test taken', error);
@@ -66,15 +68,10 @@ return(
     </div> {/*mytest*/}
     {loading && <p className="loadingMSG">Loading...</p>}
     {error && <p className="errorMSG">Error: {error.message}</p>}
-        <div className=" testResults">
-            <h3>Results: </h3>
-            <ul>
-                {testResults.map((result,index) => (
-                    <li key={index}>
-                        Exercise: {result.exerciseName}, Score: {result.score}
-                    </li>
-                ))}
-            </ul>
+		
+	
+        <div className="testResults">
+            <h3>Results: {testResults}</h3>
         </div>
         {/* <div className="prevTestResults">
             <h3>Previous Results: </h3>
