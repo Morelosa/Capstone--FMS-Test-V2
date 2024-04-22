@@ -1,10 +1,54 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { AuthMenuItems } from '../Components/MenuItems/AuthMenuItems';
 import './Dashboard.css';
 import OverviewImage from "../Components/Assets/Overview.jpg";
 import logo from "../Components/Assets/logo.png";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-const Dashboard = ({ username }) => {
+const Dashboard = () => {
+  const [username, setUserName] = useState(null);
+  const navigate = useNavigate();
+
+  const getUser = async () => {
+    
+    try {
+      const response = await axios.post("http://127.0.0.1:5000/@me", {
+        email: localStorage.getItem("email")
+        
+      });
+      
+      // Check if response status is 200 (OK)
+      if (response.status === 200) {
+        // Redirect user to dashboard upon successful login
+        console.log(response.data);
+        setUserName(response.data.name);
+        
+        
+
+      } else {
+        // Handle other response statuses
+        console.log("Unexpected response status:", response.status);
+      }
+    } catch (error) {
+      console.error("Error occurred:", error);
+    } 
+  };
+
+  const signOut = async  () => {
+    try {
+      await axios.post("http://127.0.0.1:5000/logout");
+      localStorage.clear();
+      navigate('/');
+    } catch (error) {
+      console.error("Error occurred during logout:", error);
+    }
+  }
+
+  useEffect(() => {
+    getUser();
+  }, [])
+
   return (
     <div className="dashboard-container">
       <div className="logo-title-container">
@@ -12,10 +56,33 @@ const Dashboard = ({ username }) => {
         <h1 className="dashboard-title">FMS</h1>
       </div>
       {username && (
-        <div className="username-container">
+        <div className="username-menu-item">
           <div className="username-text">{username}</div>
         </div>
       )}
+
+
+      <ul className="dashboard-menu">
+      {AuthMenuItems.map((item, index) => (
+          <li key={index} className="dashboard-menu-item">
+            {/* Check if the item is Logout, then call handleLogout function */}
+            {item.title === 'Logout' ? (
+              <a href="/" className="dashboard-menu-link" onClick={signOut}>
+                <i className={item.icon}></i>
+                {item.title}
+              </a>
+            ) : (
+              <a href={item.url} className="dashboard-menu-link">
+                <i className={item.icon}></i>
+                {item.title}
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+
+      
+      {/*
       <ul className="dashboard-menu">
         {AuthMenuItems.map((item, index) => (
           <li key={index} className="dashboard-menu-item">
@@ -26,6 +93,10 @@ const Dashboard = ({ username }) => {
           </li>
         ))}
       </ul>
+      
+      */}
+
+
       <div className="overview-image-container">
         <img src={OverviewImage} alt="Overview" className="overview-image" />
       </div>
@@ -39,10 +110,9 @@ const Dashboard = ({ username }) => {
         <div className="square-box right-box">
           <p>
             <strong>How does FMS work?</strong><br />
-            The FMS tests seven different movement patterns and scores them from 0 - 3.
+            The FMS tests seven different movement patterns and scores them from 1 - 3.
             <br />
-            0 - there is pain during any movement.
-            <br />
+           
             1 - the individual cannot perform the movement patterns, even with compensations.
             <br />
             2 - the individual can perform the movement patterns, but must use poor mechanics and compensatory patterns.

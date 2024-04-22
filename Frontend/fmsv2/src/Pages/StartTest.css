@@ -111,8 +111,8 @@
   position: absolute;
   bottom: 80px; /* Adjust the top position */
   right: 15px; /* Adjust the right position */
-  background-color: lightgreen;
-  color: #000; /* Black color for text */
+  background-color: #007bff;
+  color: #fff; /* Black color for text */
 }
 
 

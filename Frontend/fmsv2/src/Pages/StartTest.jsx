@@ -5,19 +5,21 @@ import { Link, useNavigate } from 'react-router-dom';
 const StartTest = () => {
 
   const [countdown, setCountdown] = useState(0); // Countdown state
-  const [testResult, setTestResult] = useState(null); // Test result state
-  const [selectedPainScale, setSelectedPainScale] = useState(null); // Selected pain scale state
-  const [selectedExercise, setSelectedExercise] = useState(""); // Selected exercise state
+  const [selectedExercise, setSelectedExercise] = useState(null); // Selected exercise state
   const [exercisePort, setExercisePort] = useState(null);
 
 
   //const image = document.getElementById("webcam_page_page_src");
   // Function to start the test
   const startCountdown = () => {
+    if(selectedExercise === null){
+      alert("Please first select an exercise");
 
-    setExercisePort("http://127.0.0.1:5000/"+ selectedExercise);
-
-    setCountdown(10); // Start the countdown from 11
+    }
+    else {
+      setExercisePort("http://127.0.0.1:5000/"+ selectedExercise);
+      setCountdown(10); // Start the countdown from 11
+    }
   };
 
   // Function to handle countdown
@@ -33,23 +35,16 @@ const StartTest = () => {
   }, [countdown]);
 
   // Function to handle submitting test result
-  const submitTestResult = (result) => {
-    setTestResult(result);
-  };
-
+  
   // Function to reset test
   const resetTest = () => {
     setCountdown(0);
-    setTestResult(null);
-    setSelectedPainScale(null); // Reset the selected pain scale as well
     setSelectedExercise(null); // Reset the selected exercise as well
     setExercisePort(null); //Resets the exercise port so nothing is displayed
   };
 
   // Function to handle pain scale selection
-  const handlePainScaleSelect = (value) => {
-    setSelectedPainScale(value);
-  };
+ 
 
   // Function to handle exercise selection
   const handleExerciseSelect = (value) => {
@@ -80,21 +75,7 @@ const StartTest = () => {
         </select>
       </div>
 
-      {/* Display selected exercise */}
-      {selectedExercise && (
-        <p className="selected-exercise">Selected Exercise: {selectedExercise}</p>
-      )}
-
-      {/*Display exercise port */}
-      {exercisePort &&(
-        <p className="selected-exercise">Selected Exercise Port: {exercisePort}</p>
-      )}
       
-
-      {/* Display selected pain scale */}
-      {selectedPainScale && (
-        <p className="selected-pain-scale">Selected Pain Scale: {selectedPainScale}</p>
-      )}
 
       {/* Go Back button */}
       <div className="go-back-button">
@@ -114,11 +95,6 @@ const StartTest = () => {
         <img id="webcam_page_page_src" src={exercisePort} width="100%" height="100%" alt=""></img>
       )}
 
-
-
-
-      
-
       {/*This is where the backend is going to be implimented */}
       {/* Start Test button */}
       {countdown === 0 && (
@@ -128,40 +104,15 @@ const StartTest = () => {
       )}
 
       {/* Countdown display */}
-	  /*
       {countdown > 0 && (
         <div className="countdown-display">
           <p>Starting in {countdown}</p>
         </div>
-      )}*/
-
-      {/* Test result */}
-      {testResult && (
-        <div className="test-result-display">
-          <p>Test Result: {testResult}</p>
-        </div>
       )}
-
-      {/*Exercise Port 
-      {
-        exercisePort && (
-          <div>
-            <p> Test Result: {exercisePort}</p>
-          </div>
-        )
-      }
-      */}
-
-      {/* Test result button */}
-      <div className="test-result-buttons">
-      <Link to="/TestResult">
-       <button onClick={() => submitTestResult()}>Test Result</button>
-       </Link> 
-      </div>
-
 
 
       {/* Pain scale dropdown */}
+      {/* 
       <div className="pain-scale-dropdown">
         <button className="pain-scale-button">Pain Scale</button>
         <select className="pain-scale-select" onChange={(e) => handlePainScaleSelect(parseInt(e.target.value))}>
@@ -170,6 +121,7 @@ const StartTest = () => {
           <option value="3">3</option>
         </select>
       </div>
+      */}
 
       {/* Linking the "Click for tutorial" button */}
       <div className="tutorial-button">

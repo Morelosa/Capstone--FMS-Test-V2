@@ -117,6 +117,7 @@
     text-decoration: none; /* Remove underline */
     color: inherit !important; /* Inherit the color and override any other styles */
     pointer-events: none; /* Disable pointer events */
+    font-size: 20px;
   }
   
   .username-text:visited,

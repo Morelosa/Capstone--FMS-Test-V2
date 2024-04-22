@@ -232,9 +232,6 @@ class scoring:
                 floor_position = r_heel[1]
             
             '''Ensure feet are on sagital plane based off of feet z positions'''
-            '''This depth perception is an experiment and is subject to getting axed'''
-            '''If mediapipe depth preception is accurate, we can have this function'''
-            '''Working dynamically from tracking either the right or left knee'''
             #get left foot heel and left front foot
             l_heel = landmark_dict[frame][29]
             l_front_foot = landmark_dict[frame][31]
@@ -316,31 +313,31 @@ class scoring:
         
     def score_active_straight_leg(landmark_dict):
         # default score if N/A
-        score = 0
+        score = 3
         
         return score
         
     def score_inline_lunge(landmark_dict):
         # default score if N/A
-        score = 0
+        score = 3
         
         return score
     
     def score_rotary_stability(landmark_dict):
         # default score if N/A
-        score = 0
+        score = 3
         
         return score
         
     def score_shoulder_mobility(landmark_dict):
         # default score if N/A
-        score = 0
+        score = 1
         
         return score
         
     def score_trunk_stability(landmark_dict):
         # default score if N/A
-        score = 0
+        score = 3
         
         return score
 

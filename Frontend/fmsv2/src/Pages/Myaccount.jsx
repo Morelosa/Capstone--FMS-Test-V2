@@ -1,14 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './MyAccount.css';
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 const MyAccount = () => {
-  const [firstName, setFirstName] = useState('John');
-  const [lastName, setLastName] = useState('Smith');
-  const [email, setEmail] = useState('johnsmith@example.com');
-  const [address, setAddress] = useState('123 Main St, City, State, Zipcode, Country');
-  const [dob, setDob] = useState('01/01/1990');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [isEditing, setIsEditing] = useState(false);
+
+  const getUser = async () => {
+    
+    try {
+      const response = await axios.post("http://127.0.0.1:5000/@me", {
+        email: localStorage.getItem("email")
+        
+      });
+      
+      // Check if response status is 200 (OK)
+      if (response.status === 200) {
+        // Redirect user to dashboard upon successful login
+        console.log(response.data);
+        setName(response.data.name);
+        setEmail(localStorage.getItem("email"));
+        
+        
+
+      } else {
+        // Handle other response statuses
+        console.log("Unexpected response status:", response.status);
+      }
+    } catch (error) {
+      console.error("Error occurred:", error);
+    } 
+  };
 
   const handleEditName = () => {
     setIsEditing(true);
@@ -20,25 +44,18 @@ const MyAccount = () => {
   };
 
   const handleFirstNameChange = (e) => {
-    setFirstName(e.target.value);
-  };
-
-  const handleLastNameChange = (e) => {
-    setLastName(e.target.value);
+    setName(e.target.value);
   };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
 
-  const handleAddressChange = (e) => {
-    setAddress(e.target.value);
-  };
+  useEffect(() => {
+    getUser();
+  }, [])
 
-  const handleDobChange = (e) => {
-    setDob(e.target.value);
-  };
-
+ 
   return (
     <div className='account.pg'>
       <Link to="/dashboard">
@@ -51,31 +68,19 @@ const MyAccount = () => {
         <div className="user-info-box">
           <div className="subtitle">User Information</div>
           <div className="form-group">
-            <label className="bold-blue">First Name:</label>
+            <label className="bold-blue">Name:</label>
             {isEditing ? (
               <input
                 type="text"
                 className="form-control"
-                value={firstName}
+                value={name}
                 onChange={handleFirstNameChange}
               />
             ) : (
-              <span onClick={handleEditName}>{firstName}</span>
+              <span onClick={handleEditName}>{name}</span>
             )}
           </div>
-          <div className="form-group">
-            <label className="bold-blue">Last Name:</label>
-            {isEditing ? (
-              <input
-                type="text"
-                className="form-control"
-                value={lastName}
-                onChange={handleLastNameChange}
-              />
-            ) : (
-              <span onClick={handleEditName}>{lastName}</span>
-            )}
-          </div>
+   
           <div className="form-group">
             <label className="bold-blue">Email:</label>
             {isEditing ? (
@@ -87,32 +92,6 @@ const MyAccount = () => {
               />
             ) : (
               <span onClick={handleEditName}>{email}</span>
-            )}
-          </div>
-          <div className="form-group">
-            <label className="bold-blue">Date of Birth:</label>
-            {isEditing ? (
-              <input
-                type="date"
-                className="form-control"
-                value={dob}
-                onChange={handleDobChange}
-              />
-            ) : (
-              <span onClick={handleEditName}>{dob}</span>
-            )}
-          </div>
-          <div className="form-group">
-            <label className="bold-blue">Address:</label>
-            {isEditing ? (
-              <input
-                type="text"
-                className="form-control"
-                value={address}
-                onChange={handleAddressChange}
-              />
-            ) : (
-              <span onClick={handleEditName}>{address}</span>
             )}
           </div>
           {isEditing && (

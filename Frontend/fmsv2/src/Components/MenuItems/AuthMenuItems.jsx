@@ -1,12 +1,7 @@
 // MenuItems.js
 
 export const AuthMenuItems = [
-  {
-    title: 'John Smith',
-    cName: 'user-info big-font', // Add the 'big-font' class here
-    icon: 'fa-solid fa-user',
-    customClass: 'user-icon' // Custom class for the user icon
-  },
+  
   {
     title: 'Exercises',
     url: '/ExercisesComponents',

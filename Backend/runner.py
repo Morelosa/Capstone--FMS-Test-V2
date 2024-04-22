@@ -28,8 +28,6 @@ app.config['SECRETE_KEY'] = 'key'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SESSION_TYPE'] = "filesystem"
-#app.config['SESSION_PERMANENT'] = False
-#app.config['SESSION_USE_SIGNER'] = True
 Bcrypt = Bcrypt(app)
 CORS(app, supports_credentials=True)
 server_session = Session(app)
@@ -118,12 +116,10 @@ def plot_landmarks(frame):
             pass
     return frame, landmarks
 
-#@app.route('/reroute')
 def call_reroute(score):
     temp_txt = open(cwd+"\\temp_score.txt", "w")
     temp_txt.write(str(score))
     temp_txt.close()
-    #return redirect("http://localhost:3000/TestResult")
     webbrowser.open("http://localhost:3000/TestResult")
 
 @app.route('/deep_squat')
@@ -168,7 +164,6 @@ def register_user():
     # Check if the email already exists in the database
     user_exists = User.query.filter_by(email=email).first() is not None
     if user_exists:
-        print("User already exists!")
         return jsonify({"error": "User already exists"}), 409
 
     # Hash the password before storing it
@@ -185,31 +180,6 @@ def register_user():
         "email": new_user.email
     }), 201
 
-
-'''
-def register_user():
-    data = request.json.get("user")
-    #gets email and password input
-    name = data.get['name']
-    email = data.get["email"]
-    password = data.get["password"]
-
-    user_exists = User.query.filter_by(email=email).first() is not None
-
-    if user_exists:
-        print("User already exists!")
-        return jsonify({"error": "User already exists"}), 409
-    hashed_password = Bcrypt.generate_password_hash(password)
-    new_user = User(name=name, email=email, password=hashed_password)
-    db.session.add(new_user)
-    db.session.commit()
-    
-    session["user_id"] = new_user.id
-    return jsonify({
-        "id": new_user.id,
-        "email": new_user.email
-    })
-'''
 
 @app.route("/login", methods=["POST"])
 def login_user():
@@ -233,30 +203,22 @@ def login_user():
         "name": user.name
     })
 
-#wip
 @app.route("/logout", methods=["POST"])
 def logout_user():
-    session.pop("user_id")
+    session.clear()
     return "200"
 
-#wip
-@app.route("/@me")
+@app.route("/@me", methods=["POST"])
 def get_current_user():
-    email = request.json["email"]
-    #user_id = session.get("user_id")
-
-    #if not user_id:
-        #return jsonify({"error": "Unauthorized"}), 401
+    data = request.get_json()
+    email = data.get("email")
     
     user = User.query.filter_by(email = email).first()
     return jsonify({
-        #"id": user.id,
         "name": user.name,
         "email": user.email,
     }) 
 
-#This is where the flask api will retrieve the score that the backend compiles from the img src used in the test page
-#There shuold be a new class created called test_scores that save what test was preformed, the time it was done, and the score itself
 @app.route("/get_score")
 def call_get_score():
     if os.path.isfile(cwd+"\\temp_score.txt"):

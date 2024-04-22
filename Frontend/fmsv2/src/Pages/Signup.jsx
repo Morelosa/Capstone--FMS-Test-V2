@@ -16,14 +16,13 @@ function Signup() {
     try {
       const response = await axios.post('http://127.0.0.1:5000/register', {
         email: email,
+        name: name,
         password: password
         
       });
-  
-      console.log(response);
+
       navigate("/dashboard");
     } catch (error) {
-      console.log(error, 'error');
       if (error.response && error.response.status === 401) {
         alert("Invalid credentials");
       } else {
@@ -58,8 +57,8 @@ function Signup() {
           </select>
         </div> 
         {/* Link the button to the Sign In page */}
-        <Link to="/signin" className="btn btn-primary">Sign Up</Link>
-        <button className='RealSignIn' type="button" onClick={registerUser}>The real sign up button</button>
+        {/*<Link to="/signin" className="btn btn-primary">Sign Up</Link>*/}
+        <button className='btn btn-primary' type="button" onClick={registerUser}>The real sign up button</button>
 
       </form>
       <div style={{ marginTop: '20px' }}> {/* Added a margin-top */}
