@@ -20,7 +20,6 @@ function LoginPage(){
       // Check if response status is 200 (OK)
       if (response.status === 200) {
         // Redirect user to dashboard upon successful login
-        console.log(response.data);
         localStorage.setItem("name", response.data.name);
         
         
@@ -36,7 +35,7 @@ function LoginPage(){
 
 
   const logInUser = async () => {
-    if(email.length ===0){
+    if(email.length === 0){
       alert("Email has been left blank!");
     }
     else if (password.length ===0){
@@ -56,6 +55,7 @@ function LoginPage(){
           localStorage.setItem("login", true);
           getUser();
           navigate("/dashboard");
+          window.location.reload();
         } else {
           // Handle other response statuses
           console.log("Unexpected response status:", response.status);
@@ -83,7 +83,7 @@ function LoginPage(){
         <div className="form-group">
           <label>Email</label>
           <input 
-            type = "text"
+            type = "email"
             value = {email}
             onChange = {(e) => setEmail(e.target.value)}
             className="email-input"

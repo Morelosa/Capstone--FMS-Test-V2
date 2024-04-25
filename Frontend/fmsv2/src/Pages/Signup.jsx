@@ -50,15 +50,17 @@ function Signup() {
           <input type="password" className="form-control" value={password} onChange={(e)=> setPassword(e.target.value)} />
         </div>
          <div className="form-group">
+          {/* 
           <label>User Type</label>
           <select className="form-control">
             <option value="user">User</option>
             <option value="admin">Admin</option>
           </select>
+          */}
         </div> 
         {/* Link the button to the Sign In page */}
         {/*<Link to="/signin" className="btn btn-primary">Sign Up</Link>*/}
-        <button className='btn btn-primary' type="button" onClick={registerUser}>The real sign up button</button>
+        <button className='btn btn-primary' type="button" onClick={registerUser}>Sign Up</button>
 
       </form>
       <div style={{ marginTop: '20px' }}> {/* Added a margin-top */}

@@ -1,18 +1,19 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useRef} from 'react';
 import './StartTest.css';
 import { Link, useNavigate } from 'react-router-dom';
 
 const StartTest = () => {
 
   const [countdown, setCountdown] = useState(0); // Countdown state
-  const [selectedExercise, setSelectedExercise] = useState(null); // Selected exercise state
+  const [selectedExercise, setSelectedExercise] = useState(''); // Selected exercise state
   const [exercisePort, setExercisePort] = useState(null);
+  const selectRef= useRef(null);
 
 
   //const image = document.getElementById("webcam_page_page_src");
   // Function to start the test
   const startCountdown = () => {
-    if(selectedExercise === null){
+    if(selectedExercise === ""){
       alert("Please first select an exercise");
 
     }
@@ -39,7 +40,8 @@ const StartTest = () => {
   // Function to reset test
   const resetTest = () => {
     setCountdown(0);
-    setSelectedExercise(null); // Reset the selected exercise as well
+    setSelectedExercise(""); // Reset the selected exercise as well
+    selectRef.current.value = "";
     setExercisePort(null); //Resets the exercise port so nothing is displayed
   };
 
@@ -63,7 +65,7 @@ const StartTest = () => {
       {/*Port to retrieve image source:http://127.0.0.1:5000/  */}
       {/* Select Exercise dropdown */}
       <div className="select-exercise-dropdown">
-        <select className="exercise-select" onChange={(e) => handleExerciseSelect(e.target.value)}>
+        <select className="exercise-select" ref={selectRef} onChange={(e) => handleExerciseSelect(e.target.value)}>
           <option value="">Select Exercise</option>
           <option value="deep_squat">Deep Squat</option>
           <option value="hurdle_step">Hurdle Step</option>

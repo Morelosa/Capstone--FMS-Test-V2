@@ -40,6 +40,7 @@ const Dashboard = () => {
       await axios.post("http://127.0.0.1:5000/logout");
       localStorage.clear();
       navigate('/');
+      window.location.reload();
     } catch (error) {
       console.error("Error occurred during logout:", error);
     }

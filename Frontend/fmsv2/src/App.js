@@ -31,7 +31,12 @@ import { useEffect, useState } from 'react';
 
 
 export default function App() {
-  const loggedIn = localStorage.getItem("login");
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("login"));
+
+  useEffect(() => {
+    setLoggedIn(localStorage.getItem("login"));
+  }, [])
+
 
   return(
     <div className='="App'>
@@ -58,43 +63,3 @@ export default function App() {
     </div>
   )
 }
-
-
-
-
-// import './App.css';....OLDER VERSION
-// import Navbar from './Components/Navbar/Navbar';
-// import { BrowserRouter,Routes,Route } from "react-router-dom";
-// import HomeCategory from "./Pages/HomeCategory";
-// import Home from "./Pages/Home";
-// import Product from "./Pages/Product";
-// import Signin from "./Pages/Signin";
-// import Signup from "./Pages/Signup";
-
-
-
-// function App() {
-
-//   return (
-   
-//     <div>
-//       <BrowserRouter>
-//       <Navbar/>
-//       <Routes>
-//         <Route path='/' element={<Home/>}/>
-//         <Route path='/overview' element={<HomeCategory category="overview"/>}/>
-//         <Route path='/exercises' element={<HomeCategory category="exercises"/>}/>
-//         <Route path='/tutorials' element={<HomeCategory category="tutorials"/>}/>
-//         <Route path="product" element={<Product/>}>
-//           <Route path=":productId" element={<Product/>}/>
-//         </Route>
-//         <Route path='/Signin' element={<Signin/>}/>
-//         <Route path='/Signup' element={<Signup/>}/>
-//       </Routes>
-//       </BrowserRouter>
-     
-//     </div>
-//   );
-// }
-// export default App;
-
