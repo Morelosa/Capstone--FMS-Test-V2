@@ -43,6 +43,7 @@ const StartTest = () => {
     setSelectedExercise(""); // Reset the selected exercise as well
     selectRef.current.value = "";
     setExercisePort(null); //Resets the exercise port so nothing is displayed
+    window.location.reload();
   };
 
   // Function to handle pain scale selection
