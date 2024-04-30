@@ -9,4 +9,6 @@
 3. Run the "runner.py" file (this will start the backend)
 4. Open an additional command prompt window
 5. Change directory to the "Frontend\fmsv2" folder
-6. Run "npm start" (this will start the frontend)
+6. Run "rm -rf node_modules"
+7. Run "npm install" (This will download the required dependency to run the react app)
+8. Run "npm start" (this will start the frontend)
