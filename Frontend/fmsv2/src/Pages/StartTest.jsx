@@ -107,11 +107,7 @@ const StartTest = () => {
       )}
 
       {/* Countdown display */}
-      {countdown > 0 && (
-        <div className="countdown-display">
-          <p>Starting in {countdown}</p>
-        </div>
-      )}
+      
 
 
       {/* Pain scale dropdown */}

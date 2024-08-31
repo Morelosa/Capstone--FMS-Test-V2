@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.main{
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    position: absolute;
+    overflow: hidden;
+    background: #FFDBE0;
+     
+}
+
+
+.menu li {
+    list-style: none;
+    margin: 0 20px;
+    color: #42455a;
+    cursor: pointer;
+    
+
+}
+.signin-button{
+    
+    top: 40px;
+    right: 200px;
+    position: absolute;
+    text-decoration: none;
+    color: #fff;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    background-image: linear-gradient(pink, red);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+.signup-button{
+    top: 40px;
+    right: 80px;
+    position: absolute;
+    text-decoration: none;
+    color: #fff;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    background-image: linear-gradient(pink, red);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+.signin-button span{
+    display: block;
+    padding: 8px 22px;
+}
+.signup-button span{
+    display: block;
+    padding: 8px 22px;
+}
+
+.banner{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    width: 50%;
+    height: 30%;
+    margin: 0 auto;
+    padding: 20px;
+    background: #FFCCD4;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0,0,0,.1)
+}
+.text{
+    flex: 1;
+    padding-right: 20px;
+
+}
+.text h1{
+    font-size: 4vw;
+    margin-bottom: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.text p{
+    font-size: 18px;
+    line-height: 1.5;
+}
+.picture{
+    flex:1;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+.picture img{
+    max-width: 40%;
+    height: auto;
+    border-radius: 10px;
+}

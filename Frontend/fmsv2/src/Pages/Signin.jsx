@@ -10,19 +10,14 @@ function LoginPage(){
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const getUser = async () => {
-    
     try {
       const response = await axios.post("http://127.0.0.1:5000/@me", {
         email: localStorage.getItem("email")
-        
       });
-      
       // Check if response status is 200 (OK)
       if (response.status === 200) {
         // Redirect user to dashboard upon successful login
         localStorage.setItem("name", response.data.name);
-        
-        
 
       } else {
         // Handle other response statuses
@@ -32,7 +27,6 @@ function LoginPage(){
       console.error("Error occurred:", error);
     } 
   };
-
 
   const logInUser = async () => {
     if(email.length === 0){
@@ -135,7 +129,6 @@ function LoginPage(){
         <button className='btn btn-primary' type = "button" onClick = {logInUser}>
           Sign In
         </button>
-
       </form>
       <div style={{ marginTop: '20px' }}> 
         <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>

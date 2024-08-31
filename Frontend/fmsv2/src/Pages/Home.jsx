@@ -1,39 +1,27 @@
-// this is what the home page is going to look like
+import "./Home.css";
+import Image from "../Components/Assets/New logo.png";
 
-import Hero from "../Components/Hero/Hero";
-import Navbar from "../Components/Navbar/Navbar";
-import BGImage from "../Components/Assets/SBP1.png"
+export default function Home() {
+  return(
+    <div className = "main">
+      <div className = "menu">
+        <ul>
+          <li className = "active"><a href = "/signup" className = "signup-button"><span>Sign Up</span></a></li>
+          <li className = "active"><a href = "/signin" className = "signin-button"><span>Sign In</span></a></li>
+        </ul>
+      </div>
+      <div className = "banner">
+        <div className = "text">
+          <h1>FMS Test</h1>
+          <p>Functional Movement Screen Test</p>
+        </div>
+        <div className = "picture">
+          <img src = {Image} />
+        </div>
+      </div>
+    </div>
+  )
+}
 
- function Home () {
-        return (
-         <>
-         <Navbar />
-           <Hero 
-           cName="hero"
-           heroImg={BGImage}
-           title="FMS Test"
-           text= "Functional Movement Screen Test"/>
-                </>
-               );
-        }
-
- export default Home;
 
 
-
-
-
-// import React from "react";....OLDER VERSION
-// import Hero from "../Components/Hero/Hero";
-// ;
-
-// const Home = () => {
-//     return (
-//         <div>
-//             <Hero/>
-//         </div>
-//     )
-
-// }
-
-// export default Home

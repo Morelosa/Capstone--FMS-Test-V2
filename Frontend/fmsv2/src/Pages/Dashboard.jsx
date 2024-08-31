@@ -21,11 +21,7 @@ const Dashboard = () => {
       // Check if response status is 200 (OK)
       if (response.status === 200) {
         // Redirect user to dashboard upon successful login
-        console.log(response.data);
         setUserName(response.data.name);
-        
-        
-
       } else {
         // Handle other response statuses
         console.log("Unexpected response status:", response.status);
@@ -81,22 +77,6 @@ const Dashboard = () => {
           </li>
         ))}
       </ul>
-
-      
-      {/*
-      <ul className="dashboard-menu">
-        {AuthMenuItems.map((item, index) => (
-          <li key={index} className="dashboard-menu-item">
-            <a href={item.url} className="dashboard-menu-link">
-              <i className={item.icon}></i>
-              {item.title}
-            </a>
-          </li>
-        ))}
-      </ul>
-      
-      */}
-
 
       <div className="overview-image-container">
         <img src={OverviewImage} alt="Overview" className="overview-image" />
