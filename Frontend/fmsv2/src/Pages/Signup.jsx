@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
-import './Style.css';
+import './Signup.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -33,29 +33,45 @@ function Signup() {
   };
 
   return (
-    <div className='wp_bkg'>
-      <div className="container">
-        <h2>Sign Up</h2>
-        <form>
-          <div className="form-group">
-            <label>Name</label>
-            <input type="text" value={name} className="form-control" onChange={(e)=> setName(e.target.value)}  />
+    <div className="skibidi">
+      <div className="signup-box">
+        <div className= "signup-header">
+          <header>Sign Up</header>
+        </div>
+        <div className = "input-box">
+          <input
+          type = "text"
+          className = "input-field"
+          placeholder = "Name"
+          autoComplete='off'
+          value = {name}
+          onChange = {(e)=> setName(e.target.value)}
+          />
+          <input
+          type = "text"
+          className = "input-field"
+          placeholder = "Email"
+          autoComplete='off'
+          value = {email}
+          onChange = {(e)=> setEmail(e.target.value)}
+          />
+          <input
+          type = "password"
+          className = "input-field"
+          placeholder = "Password"
+          autoComplete='off'
+          value = {password}
+          onChange = {(e)=> setPassword(e.target.value)}
+          />
+          <div className = "submit-button-field">
+            <button className="submit-button" type = "button" id = "submit" onClick = {registerUser}></button>
+            <label for = "submit">Register</label>
           </div>
-          <div className="form-group">
-            <label>Email</label>
-            <input type="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} id="" />
+          <div className="sign-in-link">
+            <p>Already have an account? <a href = "/signin"> Login</a></p>
           </div>
-          <div className="form-group">
-            <label>Password</label>
-            <input type="password" className="form-control" value={password} onChange={(e)=> setPassword(e.target.value)} />
-          </div>
-          <div className="form-group">
-          </div> 
-          <button className='btn btn-primary' type="button" onClick={registerUser}>Sign Up</button>
-        </form>
-        <div style={{ marginTop: '20px' }}> {/* Added a margin-top */}
-        <p>Already have an account? <Link to="/signin">Sign In</Link></p>
-      </div>
+
+        </div>
       </div>
     </div>
   );

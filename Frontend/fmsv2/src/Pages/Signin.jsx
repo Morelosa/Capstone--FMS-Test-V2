@@ -72,7 +72,7 @@ function LoginPage(){
     <div className = "skibidi">
       <div className = "login-box">
         <div className = "login-header">
-          <header>Login</header>
+          <header>Sign In</header>
         </div>
         <div className = "input-box">
           <input
