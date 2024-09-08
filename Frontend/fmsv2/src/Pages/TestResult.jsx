@@ -1,5 +1,4 @@
 //how the test result page will look like 
-//import Dashboard from "./Dashboard";
 import "../Pages/TestResult.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -20,10 +19,8 @@ function TestResult() {
         axios.get("http://127.0.0.1:5000/get_score") 
         .then(response => {
             setTestResults(response.data);
-			//console.log(response.data);
             setLoading(false);
-			//console.log(loading);
-			//console.log(response)
+			
             })
             .catch(error => {
                 console.error('No test taken', error);
@@ -92,21 +89,3 @@ return(
 )
 }
 export default TestResult;
-
-
-// const TestResult = () =>{
-// return(
-//     <>
-//      <div className="bkg">  
-//         <div className="results">
-//             <div className="my-test">
-//             <h2>My Test Results</h2>
-//             <div className="selected-Exercises">
-//                 <h3>Selected Exercises</h3>
-//             </div>
-//             </div>
-//         </div>
-   
-//      </div>  
-// </>)} 
-// export default TestResult;

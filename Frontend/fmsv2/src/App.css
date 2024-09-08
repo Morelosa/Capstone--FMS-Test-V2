@@ -76,15 +76,7 @@ label {
   margin: 0px 30px;
 }
 
-button {
-border: none;
-background-color: burlywood;
-padding: 20px;
-border-radius: 10px;
-cursor: pointer;
-color: black;
-column-gap: 20px;
-}
+
 
 .forgot-password{
   padding-left: 20px;

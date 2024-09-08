@@ -63,8 +63,8 @@
     display: flex;
     justify-content: space-between;
     align-items:center;
-    width: 50%;
-    height: 30%;
+    width: 80%;
+    height: 60%;
     margin: 0 auto;
     padding: 20px;
     background: #FFCCD4;
@@ -77,14 +77,14 @@
 
 }
 .text h1{
-    font-size: 4vw;
-    margin-bottom: 20px;
+    font-size: 8vw;
+    margin-bottom: 30px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .text p{
-    font-size: 18px;
+    font-size: 36px;
     line-height: 1.5;
 }
 .picture{
@@ -94,7 +94,7 @@
     align-items: center;    
 }
 .picture img{
-    max-width: 40%;
+    max-width: 50%;
     height: auto;
     border-radius: 10px;
 }

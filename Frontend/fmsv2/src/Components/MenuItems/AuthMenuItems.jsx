@@ -9,16 +9,10 @@ export const AuthMenuItems = [
     icon: 'fa-solid fa-person-walking'
   },
   {
-    title: 'Tests',
+    title: 'Start Test',
     url: '/StartTest',
     cName: 'nav-links',
     icon: 'fa-solid fa-circle-check'
-  },
-  {
-    title: 'Test Result',
-    url: '/TestResult',
-    cName: 'nav-links',
-    icon: 'fa-solid fa-poll'
   },
   {
     title: 'My Account',

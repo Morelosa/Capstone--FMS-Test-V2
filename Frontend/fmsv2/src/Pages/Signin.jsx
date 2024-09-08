@@ -1,13 +1,12 @@
-import React, {useState, useRef, useEffect} from 'react'; 
-import './Style.css';
-import { Link , useNavigate} from 'react-router-dom';
+import React, {useState} from 'react'; 
+import "./Signin.css";
+import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
 function LoginPage(){
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const getUser = async () => {
     try {
@@ -70,71 +69,53 @@ function LoginPage(){
   };
 
   return (
-    <div className='wp_bkg'>
-    <div className="container">
-      <h2>Sign In</h2>
-      <form>
-        <div className="form-group">
-          <label>Email</label>
-          <input 
-            type = "email"
-            value = {email}
-            onChange = {(e) => setEmail(e.target.value)}
-            className="email-input"
-           />
+    <div className = "skibidi">
+      <div className = "login-box">
+        <div className = "login-header">
+          <header>Login</header>
         </div>
-  
-        <div className="form-group password-group">
-          <label>Password</label>    </div>
-          <div className="password-input-wrapper">
-              <input
-                  type={isPasswordVisible ? "text" : "password"}
-                  className="form-control"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-              />
-              <span
-                  className="password-toggle"
-                  onClick={() => setIsPasswordVisible(!isPasswordVisible)}
-              >
-                  {isPasswordVisible ? (
-                      // Inline SVG for eye-slash icon
-                      <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          className="bi bi-eye-slash"
-                          viewBox="0 0 16 16"
-                      >
-                          <path d="M10.5 5a2.5 2.5 0 0 0-4.9 0A2.5 2.5 0 0 0 10.5 5z" />
-                          <path d="M1 8s3-6 7-6 7 6 7 6-3 6-7 6-7-6-7-6zm7 4a4 4 0 0 1 0-8 4 4 0 0 1 0 8z" />
-                      </svg>
-                  ) : (
-                      // Inline SVG for eye icon
-                      <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          className="bi bi-eye"
-                          viewBox="0 0 16 16"
-                      >
-                          <path d="M16 8s-3-6-8-6-8 6-8 6 3 6 8 6 8-6 8-6zm-8 3a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
-                          <path d="M6.5 8a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0z" />
-                      </svg>
-                  )}
-              </span>
+        <div className = "input-box">
+          <input
+          type = "Text" 
+          className = "input-field" 
+          placeholder = "Email" 
+          autocomplete = "off"
+          value = {email}
+          onChange = {(e) => setEmail(e.target.value)} 
+          required
+          />
+          <div className = "input-box">
+            <input
+            className = "input-field"
+            type = "password"
+            placeholder = "Password"
+            autocomplete = "off"
+            value = {password}
+            onChange = {(e) => setPassword(e.target.value)}
+            />
+          </div>
+          {/* 
+          <div className="forgot">
+            <section>
+              <input type="checkbox" id = "check"/>
+              <label for = "check">Remember Me</label>
+            </section>
+            <section>
+              <a href = "/blah">Forgot Password</a>
+            </section>
+          </div>
+          */}
+          <div className="submit-button-field">
+            <button className="submit-button" type = "button" id = "submit" onClick = {logInUser}></button>
+            <label for = "submit">Sign In</label>
+          </div>
+          <div className="sign-up-link">
+            <p>Don't have an account? <a href = "/signup"> Sign Up</a></p>
+          </div>
         </div>
-        <button className='btn btn-primary' type = "button" onClick = {logInUser}>
-          Sign In
-        </button>
-      </form>
-      <div style={{ marginTop: '20px' }}> 
-        <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
       </div>
     </div>
-    </div>
+    
   );
 
 }

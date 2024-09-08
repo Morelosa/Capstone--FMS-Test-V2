@@ -4,6 +4,7 @@
     display: flex;
     align-items: center; /* Align items vertically */
     margin-bottom: 25px; /* Add margin-bottom for spacing */
+    
   }
   
   .logo-image {
@@ -20,6 +21,7 @@
     flex-direction: column;
     overflow: hidden; /* Hide overflow content */
     margin-top: 20px;
+    
 }
 
 .dashboard-title {
@@ -30,19 +32,26 @@
 }
 
 .dashboard-menu {
+    width: 15%;
     list-style-type: none;
-    padding: 10px; /* Add padding to the menu */
     display: flex;
     flex-direction: column; /* Align items vertically as a column */
+    background: #FFDBE0;
+    
 }
-
 
 .dashboard-menu-item {
-    margin-top: 30px;
+    padding: 10px;
+    border: 1px solid black;
+    
 
 }
 
+.dashboard-username{
+    padding: 20px;
+    font-size: 20px;
 
+}
 
 .dashboard-menu-link {
     text-decoration: none;
@@ -62,12 +71,15 @@
     right: 20%; /* Move the image a little bit to the left */
     transform: translateY(-50%); /* Center the image vertically */
     z-index: -1; /* Ensure the image is behind other content */
+    background: #FFDBE0
+    
 }
 
 .overview-image {
     width: 140%; /* Cover the entire width */
     height: 1%; /* Decreased height of the image */
     object-fit: cover; /* Ensure the image covers the container */
+    background: #FFDBE0
 }
 
 .box-container {
@@ -135,4 +147,5 @@
     padding: 10px;
     margin-top: 10px;
   }
+
   

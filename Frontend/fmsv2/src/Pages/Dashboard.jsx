@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { AuthMenuItems } from '../Components/MenuItems/AuthMenuItems';
 import './Dashboard.css';
 import OverviewImage from "../Components/Assets/Overview.jpg";
-import logo from "../Components/Assets/logo.png";
+import logo from "../Components/Assets/New logo.png";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -52,18 +52,21 @@ const Dashboard = () => {
         <img src={logo} alt="logo" className="logo-image" />
         <h1 className="dashboard-title">FMS</h1>
       </div>
-      {username && (
-        <div className="username-menu-item">
-          <div className="username-text">{username}</div>
-        </div>
-      )}
-
 
       <ul className="dashboard-menu">
+        {username&&(
+          <div className="username-menu-item">
+            <div className="dashboard-username">{username}</div>
+          </div>
+        )
+        }
+
       {AuthMenuItems.map((item, index) => (
           <li key={index} className="dashboard-menu-item">
+
             {/* Check if the item is Logout, then call handleLogout function */}
             {item.title === 'Logout' ? (
+              
               <a href="/" className="dashboard-menu-link" onClick={signOut}>
                 <i className={item.icon}></i>
                 {item.title}

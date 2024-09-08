@@ -2,157 +2,110 @@
 
 /* Container for the entire start test page */
 .start-test-container {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* Webcam container */
-  .webcam-container {
-    width: 80%;
-    height: 80%;
-    margin-right: 65px;
-  }
-  
-  /* Webcam styling */
-  .webcam {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .start-test-button {
-    margin-top: 81px; /* Add margin-top to lower the button */
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #FFDBE0
 }
-  /* Countdown display */
-  .countdown-display {
-    position: absolute;
-    top: 20px;
-  }
- 
-/* Test result button */
-.test-result-buttons button {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: lightgreen;
-    color: #000; /* Black color for text */
-    border: none;
-    cursor: pointer;
+  
+/* Webcam container */
+.webcam-container {
+  width: 85%;
+  height: 80%;
+}
+  
+/* Webcam styling */
+.webcam {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+  
+/*Let me cook*/
+.control-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
 }
 
-  /* Test result buttons */
-  .test-result-buttons {
-    position: absolute;
-    bottom: 20px;
-    right: 53px; /* Position at the bottom right */
-  }
-  
-  /* Pain scale dropdown container */
-  .pain-scale-dropdown {
-    position: absolute;
-    bottom: 130px;
-    right: 53px;
-
-  }
-  
-  /* Pain scale button */
-  .pain-scale-button {
-    padding: 7.5px 7px;
-    font-size: 18px;
-    background-color: lightgreen;
-    color: #000; /* Black color for text */
-    border: none;
-    cursor: pointer;
-    
-  }
-  
-
-  
-  /* Selected pain scale display */
-  .selected-exercises {
-    position: absolute;
-    bottom: 180px;
-    margin-right: 350px;
-    
-
-  }
-  /* StartTest.css */
-
-
-.top-row-buttons button{
-    position: absolute;
-    bottom: 10px;
-    left: 50%; /* Set left to 50% */
-    transform: translateX(-200%); /* Center horizontally */
-    display: flex;
-    align-items: center;
-    padding: 15px 30px;
-    background-color: #007bff;
-    color: #fff;
-    
+/* Left button styling (Dashboard button) */
+.left-button {
+  margin-left: 10px;
 }
-/* StartTest.css */
 
-.select-exercise-dropdown select {
-  width: 165px; /* Set the width of the dropdown */
-  height: 30px; /* Set the height of the dropdown */
-  font-size: 16px; /* Set the font size of the dropdown */
-  padding: 5px; /* Add padding to the dropdown */
+/* Center controls: group Reset and Tutorial buttons around Start Test */
+.center-controls {
   position: absolute;
-  bottom: 80px; /* Adjust the top position */
-  right: 15px; /* Adjust the right position */
-  background-color: #007bff;
-  color: #fff; /* Black color for text */
+  left: 50%;
+  transform: translateX(-50%); /* Center align exactly to the middle of the page */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-/* Go back button */
-.go-back-button button {
-    margin-right: 10px; /* Adjust margin to create space between buttons */
-    position: absolute;
-    bottom: 10px;
-    left: 10%; /* Set left to 10% */
-    transform: translateX(-50%); /* Center horizontally */
-    padding: 15px 30px; /* Add padding */
-     background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-
-  
-  /* Adjust margins for buttons */
-  .top-row-buttons button {
-    margin-right: 10px;
-  }
-
- 
-.tutorial-button {
-  position: absolute;
-  bottom: 180px; /* Adjust the top position */
-  right: 20px; /* Adjust the right position */
-}
-
-.tutorial-button button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
+/* Control buttons styling */
+.control-button {
+  background-color: #444;
   color: #fff;
+  border: none;
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.tutorial-button button:hover {
-  background-color: #0056b3;
+.control-button i {
+  margin-right: 8px;
+}
+
+/* Hover effect */
+.control-button:hover {
+  background-color: #555;
+}
+
+/* Special styling for the Start button (centered) */
+.start-button {
+  margin: 0 20px; /* Add more margin to separate it from Reset and Tutorial */
+}
+
+/* Right dropdown control (Exercise selection dropdown) */
+.right-dropdown {
+  margin-right: 10px;
+}
+
+.exercise-select {
+  background-color: #444;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  outline: none;
+}
+
+.exercise-select:hover {
+  background-color: #555;
+}
+
+.exercise-select option {
+  background-color: #333;
+  color: #fff;
 }
